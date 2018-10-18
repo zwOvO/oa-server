@@ -21,12 +21,17 @@ import com.oa.util.StringUtil;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.util.List;
 
 /**
@@ -205,6 +210,50 @@ public class UserController {
         }
         boolean result = userService.deleteByUserNo(userNo);
         return ResponseHelper.buildResponseModel(result);
+    }
+
+    @ApiOperation(value="删除用户", notes="根据url的id来删除用户")
+    @ApiImplicitParam(name = "userNo", value = "用户ID", required = true, dataType = "String",paramType = "path")
+    @PostMapping(value = "/{userNo}")
+    //暂时换成了角色控制权限,改变请看MyRealm.class
+//    @RequiresPermissions(value = {"user:delete"})
+    //拥有超级管理员或管理员角色的用户可以访问这个接口
+    @RequiresRoles(value = {Constant.RoleType.USER,Constant.RoleType.ADMIN,Constant.RoleType.USER},logical =  Logical.OR)
+    public ResponseModel updateAvatar(@PathVariable("userNo") String userNo, @RequestParam ("file" ) MultipartFile file, HttpServletRequest request , HttpServletResponse response ) throws Exception {
+        JSONObject json = new JSONObject();
+
+        if(file .isEmpty()) {
+            ResponseHelper.buildResponseModel(false);
+        }
+        User user = userService.selectById(userNo);
+        if (ComUtil.isEmpty(user)) {
+            return ResponseHelper.validationFailure(PublicResultConstant.INVALID_USER);
+        }
+        boolean result = userService.deleteByUserNo(userNo);
+        if(!result){
+            ResponseHelper.buildResponseModel(false);
+        }
+
+        String fileName = file.getOriginalFilename();
+        String path = uploadConfig .getReceiveRoot() + "/" + userNo + "/";
+        File localFile = new File(path);
+
+        if(!localFile .exists()) {
+            localFile.mkdirs();
+        }
+        try {
+
+            file.transferTo(new File(path+fileName));
+
+            //downloadUrl为包的下载目录
+            String downloadUrl = uploadConfig.getReceiveDownloadRoot() + innerCode + "/" + fileName ;
+            boolean result = userService.deleteByUserNo(userNo);
+            return ResponseHelper.buildResponseModel(result);
+        } catch (Exception e ) {
+            json.put("code" , 500);
+            json.put("msg" , "上传发生异常" );
+        }
+        ResponseHelper.buildResponseModel(false);
     }
 }
 

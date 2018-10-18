@@ -3,9 +3,12 @@ package com.oa.util;
 import com.baidu.aip.face.AipFace;
 import com.baidu.aip.face.MatchRequest;
 import org.json.JSONObject;
+import sun.misc.BASE64Encoder;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -22,13 +25,13 @@ public class BaiduAIUtils {
 
     public static void main(String[] args) {
         //String res = addUser("G:/1.jpg","FJUT_CS1701_OA","test");
-        //String res = detect("G:/1.jpg");
-        String res = match("fe3bfd789fd8e19dd016127794461656","G:/2.jpg");
+        String res = detect("G:/1.jpg").toString();
+        //String res = match("fe3bfd789fd8e19dd016127794461656","G:/2.jpg").toString();
         System.out.println(res);
     }
 
     //人脸对比
-    public static String match(String faceToken,String imgPath) {
+    public static JSONObject match(String faceToken,String imgPath) {
         try {
             String image1 = faceToken;
             String image2 = FileUtil.image2Base64String(new FileInputStream(new File(imgPath)));
@@ -41,33 +44,34 @@ public class BaiduAIUtils {
             requests.add(req2);
 
             JSONObject res = client.match(requests);
-            return res.toString();
+            return res;
         }catch (Exception e){
-            return new JSONObject().put("error_code",-1).put("error_msg",e.getMessage()).toString();
+            return new JSONObject().put("error_code",-1).put("error_msg",e.getMessage());
         }
     }
 
     //人脸检测
-    public static String detect(String imgPath) {
+    public static JSONObject detect(String imgPath) {
         try {
             // 传入可选参数调用接口
             HashMap<String, String> options = new HashMap<String, String>();
             options.put("face_field", "age,gender,face_type,quality,blur");
+            options.put("max_face_num", "2");
             options.put("face_type", "LIVE");
 
-            String image = FileUtil.image2Base64String(new FileInputStream(new File(imgPath)));
+            String image = image2Base64String(new FileInputStream(new File(imgPath)));
             String imageType = "BASE64";
 
             // 人脸检测
             JSONObject res = client.detect(image, imageType, options);
-            return res.toString();
+            return res;
         }catch (Exception e){
-            return new JSONObject().put("error_code",-1).put("error_msg",e.getMessage()).toString();
+            return new JSONObject().put("error_code",-1).put("error_msg",e.getMessage());
         }
     }
 
     //人脸注册
-    public static String addUser(String imgPath, String groupId, String userId) {
+    public static JSONObject addUser(String imgPath, String groupId, String userId) {
         try {
             // 传入可选参数调用接口
             HashMap<String, String> options = new HashMap<String, String>();
@@ -80,9 +84,26 @@ public class BaiduAIUtils {
 
             // 人脸注册
             JSONObject res = client.addUser(image, imageType, groupId, userId, options);
-            return res.toString();
+            return res;
         }catch (Exception e){
-            return new JSONObject().put("error_code",-1).put("error_msg",e.getMessage()).toString();
+            return new JSONObject().put("error_code",-1).put("error_msg",e.getMessage());
         }
+    }
+
+
+    public static String image2Base64String(InputStream content) throws Exception {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        try {
+            int length = 0;
+            byte[] buffer = new byte[1024];
+            while((length = content.read(buffer)) > 0){
+                out.write(buffer,0,length);
+            }
+        } finally {
+            if (content != null) content.close();
+            if(out != null) out.close();
+        }
+        BASE64Encoder encoder = new BASE64Encoder();
+        return encoder.encode(out.toByteArray());
     }
 }

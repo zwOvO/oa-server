@@ -38,4 +38,6 @@ public interface IUserService extends IService<User> {
     boolean deleteByUserNo(String userNo);
 
     Page<User> selectPageByConditionUser(Page<User> userPage, String info, Integer[] status, String startTime, String endTime);
+
+    boolean updateAvatar(String  imgPath,String groupId,String userId);
 }
