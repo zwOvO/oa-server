@@ -220,10 +220,9 @@ public class UserController {
     //拥有超级管理员或管理员角色的用户可以访问这个接口
     @RequiresRoles(value = {Constant.RoleType.USER,Constant.RoleType.ADMIN,Constant.RoleType.USER},logical =  Logical.OR)
     public ResponseModel updateAvatar(@PathVariable("userNo") String userNo, @RequestParam ("file" ) MultipartFile file, HttpServletRequest request , HttpServletResponse response ) throws Exception {
-        JSONObject json = new JSONObject();
 
         if(file .isEmpty()) {
-            ResponseHelper.buildResponseModel(false);
+            return ResponseHelper.buildResponseModel(false);
         }
         User user = userService.selectById(userNo);
         if (ComUtil.isEmpty(user)) {
@@ -231,29 +230,11 @@ public class UserController {
         }
         boolean result = userService.deleteByUserNo(userNo);
         if(!result){
-            ResponseHelper.buildResponseModel(false);
+            return ResponseHelper.buildResponseModel(false);
         }
-
-        String fileName = file.getOriginalFilename();
-        String path = uploadConfig .getReceiveRoot() + "/" + userNo + "/";
-        File localFile = new File(path);
-
-        if(!localFile .exists()) {
-            localFile.mkdirs();
-        }
-        try {
-
-            file.transferTo(new File(path+fileName));
-
-            //downloadUrl为包的下载目录
-            String downloadUrl = uploadConfig.getReceiveDownloadRoot() + innerCode + "/" + fileName ;
-            boolean result = userService.deleteByUserNo(userNo);
-            return ResponseHelper.buildResponseModel(result);
-        } catch (Exception e ) {
-            json.put("code" , 500);
-            json.put("msg" , "上传发生异常" );
-        }
-        ResponseHelper.buildResponseModel(false);
+        return ResponseHelper.buildResponseModel(false);
     }
+
+
 }
 

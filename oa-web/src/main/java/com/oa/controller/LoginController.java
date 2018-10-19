@@ -1,5 +1,6 @@
 package com.oa.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.oa.annotation.Log;
@@ -17,17 +18,20 @@ import com.oa.service.ISmsVerifyService;
 import com.oa.service.IUserService;
 import com.oa.service.impl.MyWebSocketService;
 import com.oa.util.ComUtil;
+import com.oa.util.HttpUtil;
 import com.oa.util.SmsSendUtil;
 import com.oa.util.StringUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.lang.StringUtils;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
+import java.net.HttpURLConnection;
 import java.util.List;
 import java.util.Map;
 
@@ -73,6 +77,31 @@ public class LoginController {
         noticeService.insertByThemeNo("themeNo-cwr3fsxf233edasdfcf2s3","13888888888");
         MyWebSocketService.sendMessageTo(JSONObject.toJSONString(user),"13888888888");
         return ResponseHelper.buildResponseModel(result);
+    }
+
+    @ApiOperation(value="小程序登录", notes="body体参数,不需要Authorization",produces = "application/json")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "requestJson", value = "{\"code\":\"011HOTqS0GZIX72WECsS01o0rS0HOTqT\"}"
+                    , required = true, dataType = "String",paramType="body")
+    })
+    @PostMapping("/login/miniprogram")
+    @Log(description="小程序登录接口:/login/miniprogram")
+    @Pass
+    public ResponseModel<Map<String, Object>> miniProgramLogin(
+            @ValidationParam("code")@RequestBody JSONObject requestJson) throws Exception{
+        //由于 @ValidationParam注解已经验证过mobile和passWord参数，所以可以直接get使用没毛病。
+        String code = requestJson.getString("code");
+        if(StringUtils.isBlank(code)){
+            return ResponseHelper.validationFailure(PublicResultConstant.UNAUTHORIZED);
+        }
+        String res = HttpUtil.get("https://api.weixin.qq.com/sns/jscode2session?appid=wx060c24db20a8d971&secret=65e088e6d48af9a995343b554c78cf64&js_code=" + code + "&grant_type=authorization_code");
+        JSONObject jsonObject = JSON.parseObject(res);
+        String openid = jsonObject.getString("openid");
+        if(!StringUtils.isBlank(openid)){
+            return ResponseHelper.buildResponseModel(jsonObject);
+        }else{
+            return ResponseHelper.validationFailure(PublicResultConstant.PARAM_ERROR);
+        }
     }
 
     @ApiOperation(value="短信验证码登录", notes="body体参数,不需要Authorization",produces = "application/json")
