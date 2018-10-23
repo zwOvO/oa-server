@@ -4,7 +4,6 @@ import com.oa.base.PublicResultConstant;
 import com.oa.config.ResponseHelper;
 import com.oa.config.ResponseModel;
 import com.oa.util.ComUtil;
-import com.oa.util.FileUtil;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import springfox.documentation.annotations.ApiIgnore;
@@ -27,10 +26,10 @@ public class ResourceController {
         List<String> filePaths = new ArrayList<>();
         if(!ComUtil.isEmpty(multipartFiles) && multipartFiles.length != 0) {
             for (MultipartFile multipartFile : multipartFiles) {
-                int fileType =  FileUtil.getFileType(multipartFile.getOriginalFilename());
-                filePaths.add(
-                        FileUtil.saveFile(multipartFile.getInputStream(), fileType, multipartFile.getOriginalFilename(), null)
-                );
+//                int fileType =  FileUtil.getFileType(multipartFile.getOriginalFilename());
+//                filePaths.add(
+//                        FileUtil.saveFile(multipartFile.getInputStream(), fileType, multipartFile.getOriginalFilename(), null)
+//                );
             }
         }
         return ResponseHelper.buildResponseModel(filePaths);
@@ -40,9 +39,9 @@ public class ResourceController {
     public ResponseModel deleteResource(@RequestParam("filePaths") List<String> filePaths){
         if(!ComUtil.isEmpty(filePaths) && filePaths.size() !=0){
             for (String item: filePaths) {
-                if(!FileUtil.deleteUploadedFile(item)){
-                    return ResponseHelper.validationFailure(PublicResultConstant.ERROR);
-                }
+//                if(!FileUtil.deleteUploadedFile(item)){
+//                    return ResponseHelper.validationFailure(PublicResultConstant.ERROR);
+//                }
             }
         }
         return ResponseHelper.buildResponseModel(filePaths);

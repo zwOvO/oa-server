@@ -1,9 +1,11 @@
 package com.oa.service;
 
 import com.baomidou.mybatisplus.plugins.Page;
+import com.oa.base.BaseService;
 import com.oa.entity.User;
 import com.baomidou.mybatisplus.service.IService;
 
+import java.io.InputStream;
 import java.util.Map;
 
 /**
@@ -14,7 +16,7 @@ import java.util.Map;
  * @author liugh123
  * @since 2018-05-03
  */
-public interface IUserService extends IService<User> {
+public interface IUserService extends BaseService<User> {
 
     /**
      * 根据用户名查询用户
@@ -22,8 +24,6 @@ public interface IUserService extends IService<User> {
      * @return 用户
      */
     User getUserByUserName(String username);
-
-    User getUserByMobile(String mobile);
 
     /**
      * 注册用户
@@ -33,11 +33,7 @@ public interface IUserService extends IService<User> {
      */
     User register(User user, String roleCode);
 
-    Map<String, Object> getLoginUserAndMenuInfo(User user);
-
     boolean deleteByUserNo(String userNo);
 
-    Page<User> selectPageByConditionUser(Page<User> userPage, String info, Integer[] status, String startTime, String endTime);
-
-    boolean updateAvatar(String  imgPath,String groupId,String userId);
+    String validateFace(InputStream is, String groupId, String userId, boolean isInsert);
 }

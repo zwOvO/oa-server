@@ -21,9 +21,9 @@ import java.util.Collections;
 public class TransactionalConfig {
     private static final String   CUSTOMIZE_TRANSACTION_INTERCEPTOR_NAME               = "customizeTransactionInterceptor";
     /**
-     * 默认只对 "*Service" , "*ServiceImpl" Bean 进行事务处理,"*"表示模糊匹配, 比如 : userService,orderServiceImpl
+     * 默认只对 "*service" , "*ServiceImpl" Bean 进行事务处理,"*"表示模糊匹配, 比如 : userService,orderServiceImpl
      */
-    private static final String[] DEFAULT_TRANSACTION_BEAN_NAMES                       = { "*Service" , "*ServiceImpl" };
+    private static final String[] DEFAULT_TRANSACTION_BEAN_NAMES                       = { "*service" , "*ServiceImpl" };
     /**
      * 可传播事务配置
      */

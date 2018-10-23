@@ -12,6 +12,8 @@ public class PublicResultConstant {
 
     public static final String ERROR  = "操作失败";
 
+    public static final String SUCCESS  = "操作成功";
+
     public static final String DATA_ERROR  = "数据操作错误";
 
     public static final String PARAM_ERROR  = "参数错误";
@@ -33,4 +35,6 @@ public class PublicResultConstant {
     public static final String VERIFY_PARAM_PASS  = "校验码过期";
 
     public static final String MOBILE_ERROR  = "手机号格式错误";
+
+    public static final String USER_EXIST  = "用户已存在";
 }

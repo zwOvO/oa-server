@@ -1,6 +1,7 @@
 package com.oa.entity;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
@@ -29,55 +30,43 @@ public class User extends Model<User> {
     /**
      * 用户主键
      */
-    @TableId("user_no")
-    private String userNo;
+    @TableId("open_id")
+    private String openId;
     /**
-     * 是电话号码，也是账号（登录用）
+     * 昵称
      */
-    private String mobile;
+    @TableField("nickname")
+    private String nickname;
+
     /**
      * 姓名
      */
-    @TableField("user_name")
+    @TableField("username")
     private String username;
-    /**
-     * 密码
-     */
-    @TableField("pass_word")
-    private String password;
-    /**
-     * 单位
-     */
-    private String unit;
     /**
      * 创建时间
      */
     @TableField("create_time")
-    private Long createTime;
+    private Timestamp createTime;
     /**
      * 头像
      */
+    @TableField("avatar")
     private String avatar;
     /**
-     * 状态值（1：启用，2：禁用，3：删除）
+     * 性别
      */
-    private Integer status;
+    @TableField("gender")
+    private String gender;
     /**
-     * 职位
+     * 人脸库标识
      */
-    private String job;
-
-
-    @TableField(exist = false)
-    private String token;
-
-    @TableField(exist = false)
-    private String roleName;
-
+    @TableField("face_token")
+    private String faceToken;
 
     @Override
     protected Serializable pkVal() {
-        return this.userNo;
+        return this.openId;
     }
 
 }

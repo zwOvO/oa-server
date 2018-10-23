@@ -29,24 +29,13 @@ public class SwaggerConfig {
      */
     @Bean
     public Docket api() {
-        //可以添加多个header或参数
-        ParameterBuilder aParameterBuilder = new ParameterBuilder();
-        aParameterBuilder
-                .parameterType("header")
-                .name("Authorization")
-                .description("header中Authorization字段用于认证")
-                .modelRef(new ModelRef("string"))
-                //非必需，这里是全局配置，然而在登陆的时候是不用验证的
-                .required(false).build();
-        List<Parameter> aParameters = new ArrayList<Parameter>();
-        aParameters.add(aParameterBuilder.build());
         return new Docket(DocumentationType.SWAGGER_2).groupName("v1").select()
                 .apis(RequestHandlerSelectors.basePackage("com.oa.controller"))
-                .paths(PathSelectors.ant("/**")).build().apiInfo(apiInfo1()).globalOperationParameters(aParameters);
+                .paths(PathSelectors.ant("/**")).build().apiInfo(apiInfo());
     }
 
 
-    private ApiInfo apiInfo1() {
+    private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("oa-parent的Server端 APIs")
                 .contact("oa")

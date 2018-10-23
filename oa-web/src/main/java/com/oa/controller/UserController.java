@@ -1,38 +1,22 @@
 package com.oa.controller;
 
 
-import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
-import com.oa.annotation.AccessLimit;
-import com.oa.annotation.CurrentUser;
-import com.oa.annotation.ValidationParam;
-import com.oa.base.Constant;
 import com.oa.base.PublicResultConstant;
 import com.oa.config.ResponseHelper;
 import com.oa.config.ResponseModel;
-import com.oa.entity.SmsVerify;
 import com.oa.entity.User;
-import com.oa.service.ISmsVerifyService;
 import com.oa.service.IUserService;
 import com.oa.util.ComUtil;
-import com.oa.util.SmsSendUtil;
-import com.oa.util.StringUtil;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.shiro.authz.annotation.Logical;
-import org.apache.shiro.authz.annotation.RequiresRoles;
-import org.mindrot.jbcrypt.BCrypt;
+import org.apache.commons.lang.StringUtils;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.util.List;
 
 /**
  * <p>
@@ -49,192 +33,73 @@ public class UserController {
     @Autowired
     IUserService userService;
 
-    @Autowired
-    private ISmsVerifyService smsVerifyService;
-
-    /**
-     * 获取当前登录用户信息
-     * @param user
-     * @return
-     * @throws Exception
-     */
-    @GetMapping("/currentUser")
-    public ResponseModel<User> getUser(@CurrentUser User user) throws Exception{
-        return ResponseHelper.buildResponseModel(user);
-    }
-
-    @PostMapping("/mobile")
-    public ResponseModel<String> resetMobile(@CurrentUser User currentUser,
-                                            @ValidationParam("newMobile,captcha")@RequestBody JSONObject requestJson ){
-        String newMobile = requestJson.getString("newMobile");
-        if(!StringUtil.checkMobileNumber(newMobile)){
-            return ResponseHelper.validationFailure(PublicResultConstant.MOBILE_ERROR);
-        }
-        List<SmsVerify> smsVerifies = smsVerifyService.getByMobileAndCaptchaAndType(newMobile,
-                requestJson.getString("captcha"), SmsSendUtil.SMSType.getType(SmsSendUtil.SMSType.MODIFYINFO.name()));
-        if(ComUtil.isEmpty(smsVerifies)){
-            return ResponseHelper.validationFailure(PublicResultConstant.VERIFY_PARAM_ERROR);
-        }
-        if(SmsSendUtil.isCaptchaPassTime(smsVerifies.get(0).getCreateTime())){
-            return ResponseHelper.validationFailure(PublicResultConstant.VERIFY_PARAM_PASS);
-        }
-        currentUser.setMobile(newMobile);
-        userService.updateById(currentUser);
-        return ResponseHelper.buildResponseModel(null);
-    }
-
-    @PostMapping("/password")
-    public ResponseModel<String> resetPassWord (@CurrentUser User currentUser,@ValidationParam("oldPassword,password,rePassword")
-    @RequestBody JSONObject requestJson ) throws Exception{
-        if (!requestJson.getString("password").equals(requestJson.getString("rePassword"))) {
-            return ResponseHelper.validationFailure(PublicResultConstant.INVALID_RE_PASSWORD);
-        }
-        if(!BCrypt.checkpw(requestJson.getString("oldPassword"),currentUser.getPassword())){
-            return ResponseHelper.validationFailure(PublicResultConstant.INVALID_USERNAME_PASSWORD);
-        }
-        currentUser.setPassword(BCrypt.hashpw(requestJson.getString("password"),BCrypt.gensalt()));
-        userService.updateById(currentUser);
-        return ResponseHelper.buildResponseModel(null);
-    }
-
-    /**
-     * 管理端修改密码
-     * @return
-     * @throws Exception
-     */
-    @PostMapping("/admin/password")
-    //拥有超级管理员或管理员角色的用户可以访问这个接口
-    @RequiresRoles(value = {Constant.RoleType.SYS_ASMIN_ROLE,Constant.RoleType.ADMIN},logical =  Logical.OR)
-    public ResponseModel<String> resetPassWord (@ValidationParam("userNo,password,rePassword")
-                                               @RequestBody JSONObject requestJson ) throws Exception{
-        User user = userService.selectById(requestJson.getString("userNo"));
-        if(ComUtil.isEmpty(user)){
-            return ResponseHelper.validationFailure(PublicResultConstant.INVALID_USER);
-        }
-        if (!requestJson.getString("password").equals(requestJson.getString("rePassword"))) {
-            return ResponseHelper.validationFailure(PublicResultConstant.INVALID_RE_PASSWORD);
-        }
-        user.setPassword(BCrypt.hashpw(requestJson.getString("password"),BCrypt.gensalt()));
-        userService.updateById(user);
-        return ResponseHelper.buildResponseModel(null);
-    }
-
-
-    @PostMapping("/info")
-    public ResponseModel<User> resetUserInfo (@CurrentUser User currentUser,@RequestBody JSONObject requestJson) throws Exception{
-        if(!ComUtil.isEmpty(requestJson.getString("username"))){
-            currentUser.setUsername(requestJson.getString("username"));
-        }
-        if(!ComUtil.isEmpty(requestJson.getString("avatar"))){
-            currentUser.setAvatar(requestJson.getString("avatar"));
-        }
-        if(!ComUtil.isEmpty(requestJson.getString("unit"))){
-            currentUser.setUnit(requestJson.getString("unit"));
-        }
-        if(!ComUtil.isEmpty(requestJson.getString("job"))){
-            currentUser.setJob(requestJson.getString("job"));
-        }
-        userService.updateById(currentUser);
-        return ResponseHelper.buildResponseModel(currentUser);
-    }
-
     @GetMapping(value = "/pageList")
-    //暂时换成了角色控制权限,改变请看MyRealm.class
-//    @RequiresPermissions(value = {"user:list"})
-    //拥有超级管理员或管理员角色的用户可以访问这个接口
-    @RequiresRoles(value = {Constant.RoleType.SYS_ASMIN_ROLE,Constant.RoleType.ADMIN},logical =  Logical.OR)
-    @AccessLimit(perSecond=1,timeOut = 2)
     public ResponseModel<Page<User>> findList(@RequestParam(name = "pageIndex", defaultValue = "1", required = false) Integer pageIndex,
                                  @RequestParam(name = "pageSize", defaultValue = "10", required = false) Integer pageSize,
                                  @RequestParam(value = "username", defaultValue = "",required = false) String username) {
         EntityWrapper<User> ew = new EntityWrapper<>();
         if (!ComUtil.isEmpty(username)) {
-            ew.like("user_name", username);
+            ew.like("username", username);
         }
         return ResponseHelper.buildResponseModel(userService.selectPage(new Page<>(pageIndex, pageSize), ew));
     }
 
-    @GetMapping("/admin/infoList")
-    @ApiOperation(value="获取用户列表", notes="需要header里加入Authorization")
-    //拥有超级管理员或管理员角色的用户可以访问这个接口
-    @RequiresRoles(value={Constant.RoleType.ADMIN,Constant.RoleType.SYS_ASMIN_ROLE},logical = Logical.OR)
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "pageIndex", value = "第几页"
-                    , dataType = "String",paramType="query"),
-            @ApiImplicitParam(name = "pageSize", value = "每页多少条"
-                    , dataType = "String",paramType="query"),
-            @ApiImplicitParam(name = "info", value = "会员名称或者电话"
-                    , dataType = "String",paramType="query"),
-            @ApiImplicitParam(name = "startTime", value = "开始时间"
-                    , dataType = "Long",paramType="query"),
-            @ApiImplicitParam(name = "endTime", value = "结束时间"
-                    , dataType = "Long",paramType="query")
-    })
-    public ResponseModel findInfoList(@RequestParam(name = "pageIndex", defaultValue = "1", required = false) Integer pageIndex,
-                                     @RequestParam(name = "pageSize", defaultValue = "10", required = false) Integer pageSize,
-                                     //info-->用户名或者电话号码
-                                     @RequestParam(name = "info", defaultValue = "", required = false) String info,
-                                     @RequestParam(name = "startTime", defaultValue = "", required = false) String startTime,
-                                     @RequestParam(name = "endTime", defaultValue = "", required = false) String endTime) throws Exception{
-        //启用或禁用的用户
-        Integer []  status= {1,2};
-        //自定义分页关联查询列表
-        Page<User> userPage = userService.selectPageByConditionUser(new Page<User>(pageIndex, pageSize),info,status,
-                startTime,endTime);
-        return ResponseHelper.buildResponseModel(userPage);
-    }
-
-    @ApiOperation(value="获取用户详细信息", notes="根据url的id来获取用户详细信息")
-    @ApiImplicitParam(name = "userNo", value = "用户ID", required = true, dataType = "String",paramType = "path")
-    @GetMapping(value = "/{userNo}")
-    //暂时换成了角色控制权限,改变请看MyRealm.class
-//    @RequiresPermissions(value = {"user:list"})
-    //拥有超级管理员或管理员角色的用户可以访问这个接口
-    @RequiresRoles(value = {Constant.RoleType.SYS_ASMIN_ROLE,Constant.RoleType.ADMIN},logical =  Logical.OR)
-    public ResponseModel<User> findOneUser(@PathVariable("userNo") Integer userNo) {
-        User user = userService.selectById(userNo);
-        return ResponseHelper.buildResponseModel(user);
+    @ApiOperation(value="判断当前用户是否存在", notes="根据url的id来查询账号是否存在")
+    @ApiImplicitParam(name = "openId", value = "用户ID", required = true, dataType = "String",paramType = "path")
+    @GetMapping(value = "/exist/{openId}")
+    public ResponseModel findOneUser(@PathVariable("openId") String openId) {
+        if(openId == null)
+            return ResponseHelper.validationFailure(PublicResultConstant.INVALID_USER);
+        User user = userService.selectById(openId);
+        if(user == null)
+            return ResponseHelper.validationFailure(PublicResultConstant.INVALID_USER);
+        if(StringUtils.isBlank(user.getFaceToken()))
+            return ResponseHelper.validationFailure(PublicResultConstant.UNAUTHORIZED);
+        return ResponseHelper.buildResponseModel(PublicResultConstant.USER_EXIST);
     }
 
     @ApiOperation(value="删除用户", notes="根据url的id来删除用户")
-    @ApiImplicitParam(name = "userNo", value = "用户ID", required = true, dataType = "String",paramType = "path")
-    @DeleteMapping(value = "/{userNo}")
-    //暂时换成了角色控制权限,改变请看MyRealm.class
-//    @RequiresPermissions(value = {"user:delete"})
-    //拥有超级管理员或管理员角色的用户可以访问这个接口
-    @RequiresRoles(value = {Constant.RoleType.SYS_ASMIN_ROLE,Constant.RoleType.ADMIN},logical =  Logical.OR)
-    public ResponseModel deleteUser(@PathVariable("userNo") String userNo) {
-        User user = userService.selectById(userNo);
+    @ApiImplicitParam(name = "openId", value = "用户ID", required = true, dataType = "String",paramType = "path")
+    @DeleteMapping(value = "/{openId}")
+    public ResponseModel deleteUser(@PathVariable("openId") String openId) {
+        User user = userService.selectById(openId);
         if (ComUtil.isEmpty(user)) {
             return ResponseHelper.validationFailure(PublicResultConstant.INVALID_USER);
         }
-        boolean result = userService.deleteByUserNo(userNo);
+        boolean result = userService.deleteByUserNo(openId);
         return ResponseHelper.buildResponseModel(result);
     }
 
-    @ApiOperation(value="删除用户", notes="根据url的id来删除用户")
-    @ApiImplicitParam(name = "userNo", value = "用户ID", required = true, dataType = "String",paramType = "path")
-    @PostMapping(value = "/{userNo}")
-    //暂时换成了角色控制权限,改变请看MyRealm.class
-//    @RequiresPermissions(value = {"user:delete"})
-    //拥有超级管理员或管理员角色的用户可以访问这个接口
-    @RequiresRoles(value = {Constant.RoleType.USER,Constant.RoleType.ADMIN,Constant.RoleType.USER},logical =  Logical.OR)
-    public ResponseModel updateAvatar(@PathVariable("userNo") String userNo, @RequestParam ("file" ) MultipartFile file, HttpServletRequest request , HttpServletResponse response ) throws Exception {
+    @ApiOperation(value="更新用户照片信息", notes="根据openId更新照片信息")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "openId", value = "用户openId", required = true, dataType = "String", paramType = "path"),
+            @ApiImplicitParam(name = "file", value = "用户照片", required = true, dataType = "file", paramType = "form")
+    })
+
+    @PostMapping(value = "/face/{openId}")
+    public ResponseModel validateFace(@PathVariable("openId") String openId, @RequestParam ("file" ) MultipartFile file) throws Exception {
 
         if(file .isEmpty()) {
             return ResponseHelper.buildResponseModel(false);
         }
-        User user = userService.selectById(userNo);
-        if (ComUtil.isEmpty(user)) {
-            return ResponseHelper.validationFailure(PublicResultConstant.INVALID_USER);
+        User user = userService.selectById(openId);
+        boolean isInsert = StringUtils.isBlank(user.getFaceToken());
+        String faceToken =  userService.validateFace(file.getInputStream(),"FJUT_CS1701_OA",user.getOpenId(),isInsert);
+        if(!StringUtils.isBlank(faceToken)) {
+            return ResponseHelper.buildResponseModel(faceToken);
+        }else{
+            return ResponseHelper.internalServerError("认证失败");
         }
-        boolean result = userService.deleteByUserNo(userNo);
-        if(!result){
-            return ResponseHelper.buildResponseModel(false);
-        }
-        return ResponseHelper.buildResponseModel(false);
     }
 
 
+    @PostMapping("/register")
+    public ResponseModel register (@RequestBody User user) throws Exception{
+        boolean res = userService.insertOrUpdate(user);
+        if(res)
+            return ResponseHelper.buildResponseModel("成功");
+        else
+            return ResponseHelper.buildResponseModel("失败");
+    }
 }
 
