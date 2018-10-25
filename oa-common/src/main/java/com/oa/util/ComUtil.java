@@ -3,8 +3,8 @@ package com.oa.util;
 import java.util.*;
 
 /**
- * @author oa
- * @since 2018-05-07
+ * @author zhengwen
+ * @since 2018年10月21日11:44:22
  */
 public class ComUtil {
 

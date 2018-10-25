@@ -3,8 +3,9 @@ package com.oa.config;
 import org.springframework.http.HttpStatus;
 
 /**
- * 统一返回相应参数
- * @author oa 53182347@qq.com
+ * 响应帮助类
+ * @author zhengwen
+ * @since 2018年10月21日11:44:22
  */
 public class ResponseHelper {
 

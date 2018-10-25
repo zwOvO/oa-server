@@ -17,8 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author oa
- * @since on 2018/6/28.
+ * Swagger2 Api配置
+ * @author zhengwen
+ * @since 2018年10月21日11:44:22
  */
 @Configuration
 @EnableSwagger2
@@ -37,7 +38,7 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("oa-parent的Server端 APIs")
+                .title("考勤打卡应用的Server端 APIs")
                 .contact("oa")
                 .version("v0.01")
                 .build();

@@ -9,6 +9,7 @@ import com.oa.util.HttpUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,11 +17,12 @@ import java.util.Map;
 
 /**
  *  登录接口
- * @author oa
- * @since 2018-05-03
+ * @author zhengwen
+ * @since 2018年10月21日11:44:22
  */
 @RestController
 @Api(description="身份认证模块")
+@Slf4j
 public class LoginController {
 
     @ApiImplicitParams({

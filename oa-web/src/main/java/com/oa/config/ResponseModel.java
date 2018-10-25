@@ -1,10 +1,10 @@
 package com.oa.config;
 
 /**
- * 统一返回相应参数实体类
- * @author oa 53182347@qq.com
+ * 响应模型
+ * @author zhengwen
+ * @since 2018年10月21日11:44:22
  */
-
 import java.io.Serializable;
 
 public class ResponseModel<T> implements Serializable {

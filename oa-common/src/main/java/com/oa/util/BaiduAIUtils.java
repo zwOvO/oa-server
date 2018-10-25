@@ -2,13 +2,10 @@ package com.oa.util;
 
 import com.baidu.aip.face.AipFace;
 import com.baidu.aip.face.MatchRequest;
-import jdk.internal.util.xml.impl.Input;
 import org.json.JSONObject;
 import sun.misc.BASE64Encoder;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,7 +29,7 @@ public class BaiduAIUtils {
     }
 
     //人脸对比
-    public static JSONObject match(String faceToken,InputStream is) {
+    public static String match(String faceToken,InputStream is) {
         try {
             String image1 = faceToken;
             String image2 = image2Base64String(is);
@@ -45,14 +42,14 @@ public class BaiduAIUtils {
             requests.add(req2);
 
             JSONObject res = client.match(requests);
-            return res;
+            return res.toString();
         }catch (Exception e){
-            return new JSONObject().put("error_code",-1).put("error_msg",e.getMessage());
+            return new JSONObject().put("error_code",-1).put("error_msg",e.getMessage()).toString();
         }
     }
 
     //人脸检测
-    public static JSONObject detect(InputStream content) {
+    public static String detect(InputStream content) {
         try {
             // 传入可选参数调用接口
             HashMap<String, String> options = new HashMap<String, String>();
@@ -65,14 +62,14 @@ public class BaiduAIUtils {
 
             // 人脸检测
             JSONObject res = client.detect(image, imageType, options);
-            return res;
+            return res.toString();
         }catch (Exception e){
-            return new JSONObject().put("error_code",-1).put("error_msg",e.getMessage());
+            return new JSONObject().put("error_code",-1).put("error_msg",e.getMessage()).toString();
         }
     }
 
     //人脸注册
-    public static JSONObject addUser(String faceToken, String groupId, String userId) {
+    public static String addUser(String faceToken, String groupId, String userId) {
         try {
             // 传入可选参数调用接口
             HashMap<String, String> options = new HashMap<String, String>();
@@ -85,14 +82,14 @@ public class BaiduAIUtils {
 
             // 人脸注册
             JSONObject res = client.addUser(image, imageType, groupId, userId, options);
-            return res;
+            return res.toString();
         }catch (Exception e){
-            return new JSONObject().put("error_code",-1).put("error_msg",e.getMessage());
+            return new JSONObject().put("error_code",-1).put("error_msg",e.getMessage()).toString();
         }
     }
 
     //人脸更新
-    public static JSONObject updateUser(String faceToken, String groupId, String userId) {
+    public static String updateUser(String faceToken, String groupId, String userId) {
         try {
             // 传入可选参数调用接口
             HashMap<String, String> options = new HashMap<String, String>();
@@ -105,9 +102,9 @@ public class BaiduAIUtils {
 
             // 人脸注册
             JSONObject res = client.updateUser(image, imageType, groupId, userId, options);
-            return res;
+            return res.toString();
         }catch (Exception e){
-            return new JSONObject().put("error_code",-1).put("error_msg",e.getMessage());
+            return new JSONObject().put("error_code",-1).put("error_msg",e.getMessage()).toString();
         }
     }
 

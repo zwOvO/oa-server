@@ -1,9 +1,9 @@
 package com.oa.controller;
 
-import com.oa.base.PublicResultConstant;
 import com.oa.config.ResponseHelper;
 import com.oa.config.ResponseModel;
 import com.oa.util.ComUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import springfox.documentation.annotations.ApiIgnore;
@@ -12,13 +12,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author oa
- * @since on 2018/5/11.
+ * @author zhengwen
+ * @since 2018年10月21日11:44:22
  */
 @RestController
 @RequestMapping("/resource")
 //不加入swagger ui里
 @ApiIgnore
+@Slf4j
 public class ResourceController {
 
     @PostMapping

@@ -15,8 +15,8 @@ import java.util.UUID;
 import java.util.concurrent.atomic.LongAdder;
 
 /**
- * @author oa
- * @since on 2018/5/8.
+ * @author zhengwen
+ * @since 2018年10月21日11:44:22
  */
 public class GenerationSequenceUtil {
 

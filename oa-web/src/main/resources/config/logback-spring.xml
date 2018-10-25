@@ -25,7 +25,9 @@
 	<!--<logger name="com.alibaba" level="error"/>-->
 	<!--<logger name="org.apache.kafka.clients.producer.ProducerConfig" level="warn"/>-->
 
-	<root level="INFO">
+    <logger name="com.oa.mapper" level="DEBUG" />
+
+    <root level="INFO">
 		<appender-ref ref="CONSOLE"/>
 		<appender-ref ref="FILE"/>
 	</root>

@@ -1,0 +1,14 @@
+#当前激活配置
+spring:
+  profiles:
+    active: dev
+logging:
+  level:
+    org:
+      springframework:
+        web: debug
+http:
+  #上传文件大小设置
+  multipart:
+    maxFileSize: 10Mb
+    maxRequestSize: 50Mb

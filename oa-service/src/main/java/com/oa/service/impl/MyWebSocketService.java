@@ -14,8 +14,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * @author oa
- * @since on 2018/7/11.
+ * @author zhengwen
+ * @since 2018年10月21日11:44:22
  */
 @ServerEndpoint(value = "/websocket/{mobile}")
 @Component

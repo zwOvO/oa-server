@@ -11,11 +11,11 @@ import lombok.*;
 
 /**
  * <p>
- * 用户表
+ *  用户表
  * </p>
  *
- * @author liugh123
- * @since 2018-06-25
+ * @author zhengwen
+ * @since 2018年10月21日13:22:41
  */
 @Builder
 @Getter
@@ -28,7 +28,7 @@ public class User extends Model<User> {
 
     private static final long serialVersionUID = 1L;
     /**
-     * 用户主键
+     * 用户标识
      */
     @TableId("open_id")
     private String openId;
@@ -44,25 +44,25 @@ public class User extends Model<User> {
     @TableField("username")
     private String username;
     /**
-     * 创建时间
-     */
-    @TableField("create_time")
-    private Timestamp createTime;
-    /**
      * 头像
      */
     @TableField("avatar")
     private String avatar;
     /**
-     * 性别
-     */
-    @TableField("gender")
-    private String gender;
-    /**
      * 人脸库标识
      */
     @TableField("face_token")
     private String faceToken;
+    /**
+     * 性别（1：男，2：女）
+     */
+    @TableField("gender")
+    private int gender;
+    /**
+     * 创建时间
+     */
+    @TableField("create_time")
+    private Timestamp createTime;
 
     @Override
     protected Serializable pkVal() {

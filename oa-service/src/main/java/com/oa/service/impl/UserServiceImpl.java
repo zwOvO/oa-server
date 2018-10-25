@@ -1,5 +1,6 @@
 package com.oa.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.oa.service.IUserService;
@@ -7,12 +8,9 @@ import com.oa.entity.User;
 import com.oa.mapper.UserMapper;
 import com.oa.util.BaiduAIUtils;
 import com.oa.util.GenerationSequenceUtil;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.BufferedInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -20,8 +18,8 @@ import java.io.InputStream;
  *  服务实现类
  * </p>
  *
- * @author liugh123
- * @since 2018-05-03
+ * @author zhengwen
+ * @since 2018年10月21日11:44:22
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
@@ -52,10 +50,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Override
     public String validateFace(InputStream is, String groupId, String userId , boolean isInsert) {
         try {
-            JSONObject res = BaiduAIUtils.detect(is);
-            int resCode = res.getInt("error_code");
+            JSONObject res = JSONObject.parseObject(BaiduAIUtils.detect(is));
+            int resCode = res.getIntValue("error_code");
             res = res.getJSONObject("result");
-            int faceNum = res.getInt("face_num");
+            int faceNum = res.getIntValue("face_num");
             if (resCode == 0 && faceNum == 1) {
                 //http://ai.baidu.com/docs#/Face-Java-SDK/ca2bad80 人脸质量检测参数
                 res = res.getJSONArray("face_list").getJSONObject(0);
@@ -87,7 +85,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
                 double blur = quality.getDouble("blur");
                 double t_blur = 0.7;
 
-                int illumination = quality.getInt("illumination");
+                int illumination = quality.getIntValue("illumination");
                 int t_illumination = 40;
 
                 double pitch = angle.getDouble("pitch");
@@ -99,13 +97,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
                 double yaw = angle.getDouble("yaw");
                 int t_yaw = 20;
 
-                int completeness = quality.getInt("completeness");
+                int completeness = quality.getIntValue("completeness");
                 int t_completeness = 1;
 
-                int width = location.getInt("width");
+                int width = location.getIntValue("width");
                 int t_width = 100;
 
-                int height = location.getInt("height");
+                int height = location.getIntValue("height");
                 int t_height = 100;
                 if (
                         left_eye < t_left_eye
@@ -126,13 +124,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
                 ) {
                     String faceToken = res.getString("face_token");
                     if (isInsert) {
-                        res = BaiduAIUtils.addUser(faceToken, groupId, userId);
+                        res = JSONObject.parseObject(BaiduAIUtils.addUser(faceToken, groupId, userId));
                         faceToken = res.getJSONObject("result").getString("face_token");
                     } else {
-                        res = BaiduAIUtils.updateUser(faceToken, groupId, userId);
+                        res = JSONObject.parseObject(BaiduAIUtils.updateUser(faceToken, groupId, userId));
                         faceToken = res.getJSONObject("result").getString("face_token");
                     }
-                    resCode = res.getInt("error_code");
+                    resCode = res.getIntValue("error_code");
                     if (resCode == 0) {
                         userMapper.updateFaceTokenById(userId, faceToken);
                         return faceToken;
