@@ -1,0 +1,366 @@
+11:41:43.814 [main] ERROR o.s.boot.SpringApplication - Application startup failed
+java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - Could not find an appender named [cn.iautos.manager]. Did you define it below instead of above in the configuration file?
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - See http://logback.qos.ch/codes.html#appender_order for more details.
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - Could not find an appender named [com.ibatis]. Did you define it below instead of above in the configuration file?
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - See http://logback.qos.ch/codes.html#appender_order for more details.
+	at org.springframework.boot.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:316)
+	at org.springframework.boot.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:277)
+	at org.springframework.boot.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:240)
+	at org.springframework.boot.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:213)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:122)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:74)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:54)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:325)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:296)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at com.oa.SpringbootApplication.main(SpringbootApplication.java:20)
+Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - Could not find an appender named [cn.iautos.manager]. Did you define it below instead of above in the configuration file?
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - See http://logback.qos.ch/codes.html#appender_order for more details.
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - Could not find an appender named [com.ibatis]. Did you define it below instead of above in the configuration file?
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - See http://logback.qos.ch/codes.html#appender_order for more details.
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:162)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithSpecificConfig(AbstractLoggingSystem.java:66)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:56)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:114)
+	at org.springframework.boot.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:309)
+	... 14 common frames omitted
+11:42:03.421 [main] ERROR o.s.boot.SpringApplication - Application startup failed
+java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - Could not find an appender named [cn.iautos.manager]. Did you define it below instead of above in the configuration file?
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - See http://logback.qos.ch/codes.html#appender_order for more details.
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - Could not find an appender named [com.ibatis]. Did you define it below instead of above in the configuration file?
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - See http://logback.qos.ch/codes.html#appender_order for more details.
+	at org.springframework.boot.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:316)
+	at org.springframework.boot.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:277)
+	at org.springframework.boot.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:240)
+	at org.springframework.boot.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:213)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:122)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:74)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:54)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:325)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:296)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at com.oa.SpringbootApplication.main(SpringbootApplication.java:20)
+Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - Could not find an appender named [cn.iautos.manager]. Did you define it below instead of above in the configuration file?
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - See http://logback.qos.ch/codes.html#appender_order for more details.
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - Could not find an appender named [com.ibatis]. Did you define it below instead of above in the configuration file?
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - See http://logback.qos.ch/codes.html#appender_order for more details.
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:162)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithSpecificConfig(AbstractLoggingSystem.java:66)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:56)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:114)
+	at org.springframework.boot.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:309)
+	... 14 common frames omitted
+11:42:30.156 [main] ERROR o.s.boot.SpringApplication - Application startup failed
+java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - Could not find an appender named [com.ibatis]. Did you define it below instead of above in the configuration file?
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - See http://logback.qos.ch/codes.html#appender_order for more details.
+	at org.springframework.boot.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:316)
+	at org.springframework.boot.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:277)
+	at org.springframework.boot.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:240)
+	at org.springframework.boot.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:213)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:122)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:74)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:54)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:325)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:296)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at com.oa.SpringbootApplication.main(SpringbootApplication.java:20)
+Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - Could not find an appender named [com.ibatis]. Did you define it below instead of above in the configuration file?
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - See http://logback.qos.ch/codes.html#appender_order for more details.
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:162)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithSpecificConfig(AbstractLoggingSystem.java:66)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:56)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:114)
+	at org.springframework.boot.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:309)
+	... 14 common frames omitted
+11:46:55.069 [main] ERROR o.s.boot.SpringApplication - Application startup failed
+java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - Could not find an appender named [com.ibatis]. Did you define it below instead of above in the configuration file?
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - See http://logback.qos.ch/codes.html#appender_order for more details.
+	at org.springframework.boot.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:316)
+	at org.springframework.boot.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:277)
+	at org.springframework.boot.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:240)
+	at org.springframework.boot.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:213)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:122)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:74)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:54)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:325)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:296)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at com.oa.SpringbootApplication.main(SpringbootApplication.java:20)
+Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - Could not find an appender named [com.ibatis]. Did you define it below instead of above in the configuration file?
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - See http://logback.qos.ch/codes.html#appender_order for more details.
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:162)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithSpecificConfig(AbstractLoggingSystem.java:66)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:56)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:114)
+	at org.springframework.boot.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:309)
+	... 14 common frames omitted
+11:48:13.305 [main] ERROR o.s.boot.SpringApplication - Application startup failed
+java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - Could not find an appender named [org.apache.ibatis]. Did you define it below instead of above in the configuration file?
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - See http://logback.qos.ch/codes.html#appender_order for more details.
+	at org.springframework.boot.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:316)
+	at org.springframework.boot.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:277)
+	at org.springframework.boot.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:240)
+	at org.springframework.boot.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:213)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:122)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:74)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:54)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:325)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:296)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at com.oa.SpringbootApplication.main(SpringbootApplication.java:20)
+Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - Could not find an appender named [org.apache.ibatis]. Did you define it below instead of above in the configuration file?
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - See http://logback.qos.ch/codes.html#appender_order for more details.
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:162)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithSpecificConfig(AbstractLoggingSystem.java:66)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:56)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:114)
+	at org.springframework.boot.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:309)
+	... 14 common frames omitted
+11:48:25.856 [main] ERROR o.s.b.l.LoggingApplicationListener - Cannot set level: debug  for 'org.springframework.web'
+11:48:25.988 [main] INFO  com.oa.SpringbootApplication - Starting SpringbootApplication on zw with PID 308 (H:\oa\oa-server\oa-web\target\classes started by zw in H:\oa\oa-server)
+11:48:25.989 [main] INFO  com.oa.SpringbootApplication - The following profiles are active: dev
+11:48:26.109 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@6bffbc6d: startup date [Wed Oct 24 11:48:26 CST 2018]; root of context hierarchy
+11:48:26.640 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 5.3.6.Final
+11:48:28.198 [main] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.oa.mapper.*.mapper*]' package. Please check your configuration.
+11:48:28.496 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+11:48:28.932 [main] DEBUG org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+11:48:29.244 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'transactionalConfig' of type [com.oa.config.TransactionalConfig$$EnhancerBySpringCGLIB$$fd8c7cdc] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+11:48:29.406 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$6ba91869] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+11:48:30.621 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 21019 (http)
+11:48:30.665 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-21019"]
+11:48:30.685 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+11:48:30.685 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.34
+11:48:30.939 [localhost-startStop-1] INFO  o.a.c.c.C.[.[localhost].[/api/v1] - Initializing Spring embedded WebApplicationContext
+11:48:30.939 [localhost-startStop-1] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 4830 ms
+11:48:31.271 [localhost-startStop-1] INFO  o.s.b.w.s.ServletRegistrationBean - Mapping servlet: 'statViewServlet' to [/druid/*]
+11:48:31.272 [localhost-startStop-1] INFO  o.s.b.w.s.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+11:48:31.276 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+11:48:31.277 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+11:48:31.277 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+11:48:31.277 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+11:48:31.277 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'druidWebStatFilter' to urls: [/*]
+11:48:31.277 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'corsFilter' to: [/*]
+11:48:31.701 [main] DEBUG org.apache.ibatis.io.VFS - Using VFS adapter com.baomidou.mybatisplus.spring.boot.starter.SpringBootVFS
+11:48:31.703 [main] DEBUG org.apache.ibatis.io.ResolverUtil - Checking to see if class com.oa.entity.MonthRecord$MonthRecordBuilder matches criteria [is assignable to Object]
+11:48:31.704 [main] DEBUG org.apache.ibatis.io.ResolverUtil - Checking to see if class com.oa.entity.MonthRecord matches criteria [is assignable to Object]
+11:48:31.705 [main] DEBUG org.apache.ibatis.io.ResolverUtil - Checking to see if class com.oa.entity.Record$RecordBuilder matches criteria [is assignable to Object]
+11:48:31.706 [main] DEBUG org.apache.ibatis.io.ResolverUtil - Checking to see if class com.oa.entity.Record matches criteria [is assignable to Object]
+11:48:31.706 [main] DEBUG org.apache.ibatis.io.ResolverUtil - Checking to see if class com.oa.entity.User$UserBuilder matches criteria [is assignable to Object]
+11:48:31.706 [main] DEBUG org.apache.ibatis.io.ResolverUtil - Checking to see if class com.oa.entity.User matches criteria [is assignable to Object]
+11:48:35.893 [main] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+11:48:37.409 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/login/miniprogram],methods=[POST]}" onto public com.oa.config.ResponseModel<java.util.Map<java.lang.String, java.lang.Object>> com.oa.controller.LoginController.miniProgramLogin(com.alibaba.fastjson.JSONObject) throws java.lang.Exception
+11:48:37.412 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/record/list/{openId}],methods=[GET]}" onto public com.oa.config.ResponseModel com.oa.controller.RecordController.list(java.lang.String,com.baomidou.mybatisplus.plugins.Page,java.sql.Timestamp,java.sql.Timestamp)
+11:48:37.412 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/record],methods=[POST]}" onto public com.oa.config.ResponseModel com.oa.controller.RecordController.punchTheClock(com.oa.entity.Record) throws java.lang.Exception
+11:48:37.414 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/resource],methods=[POST]}" onto public com.oa.config.ResponseModel com.oa.controller.ResourceController.uploadResource(org.springframework.web.multipart.MultipartFile[]) throws java.lang.Exception
+11:48:37.414 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/resource],methods=[DELETE]}" onto public com.oa.config.ResponseModel com.oa.controller.ResourceController.deleteResource(java.util.List<java.lang.String>)
+11:48:37.415 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/user/register],methods=[POST]}" onto public com.oa.config.ResponseModel com.oa.controller.UserController.register(com.oa.entity.User) throws java.lang.Exception
+11:48:37.416 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/user/{openId}],methods=[DELETE]}" onto public com.oa.config.ResponseModel com.oa.controller.UserController.deleteUser(java.lang.String)
+11:48:37.416 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/user/exist/{openId}],methods=[GET]}" onto public com.oa.config.ResponseModel com.oa.controller.UserController.findOneUser(java.lang.String)
+11:48:37.416 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/user/pageList],methods=[GET]}" onto public com.oa.config.ResponseModel<com.baomidou.mybatisplus.plugins.Page<com.oa.entity.User>> com.oa.controller.UserController.findList(java.lang.Integer,java.lang.Integer,java.lang.String)
+11:48:37.417 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/user/face/{openId}],methods=[POST]}" onto public com.oa.config.ResponseModel com.oa.controller.UserController.validateFace(java.lang.String,org.springframework.web.multipart.MultipartFile) throws java.lang.Exception
+11:48:37.417 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/v2/api-docs],methods=[GET]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String)
+11:48:37.420 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/swagger-resources]}" onto org.springframework.http.ResponseEntity<java.util.List<springfox.documentation.swagger.web.SwaggerResource>> springfox.documentation.swagger.web.ApiResourceController.swaggerResources()
+11:48:37.421 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/configuration/ui]}" onto org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.UiConfiguration> springfox.documentation.swagger.web.ApiResourceController.uiConfiguration()
+11:48:37.422 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/configuration/security]}" onto org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.SecurityConfiguration> springfox.documentation.swagger.web.ApiResourceController.securityConfiguration()
+11:48:37.424 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+11:48:37.425 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+11:48:37.579 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService  'taskExecutor'
+11:48:38.008 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@6bffbc6d: startup date [Wed Oct 24 11:48:26 CST 2018]; root of context hierarchy
+11:48:38.195 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+11:48:38.196 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+11:48:38.368 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+11:48:39.454 [main] INFO  o.s.w.s.s.s.ServerEndpointExporter - Registering @ServerEndpoint class: class com.oa.service.impl.MyWebSocketService
+11:48:39.466 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+11:48:39.467 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter - Bean with name 'dataSource' has been autodetected for JMX exposure
+11:48:39.474 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter - Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
+11:48:39.483 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+11:48:39.502 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found {0} custom documentation plugin(s)
+11:48:39.510 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+11:48:39.514 [main] INFO  s.d.s.w.ClassOrApiAnnotationResourceGrouping - Group for method miniProgramLogin was login-controller
+11:48:39.516 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Request mapping: miniProgramLogin belongs to groups: [[ResourceGroup{groupName='login-controller', position=0, controller=com.oa.controller.LoginController}]] 
+11:48:39.518 [main] INFO  s.d.s.w.ClassOrApiAnnotationResourceGrouping - Group for method list was record-controller
+11:48:39.518 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Request mapping: list belongs to groups: [[ResourceGroup{groupName='record-controller', position=0, controller=com.oa.controller.RecordController}]] 
+11:48:39.518 [main] INFO  s.d.s.w.ClassOrApiAnnotationResourceGrouping - Group for method punchTheClock was record-controller
+11:48:39.518 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Request mapping: punchTheClock belongs to groups: [[ResourceGroup{groupName='record-controller', position=0, controller=com.oa.controller.RecordController}]] 
+11:48:39.518 [main] INFO  s.d.s.w.ClassOrApiAnnotationResourceGrouping - Group for method findOneUser was user-controller
+11:48:39.518 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Request mapping: findOneUser belongs to groups: [[ResourceGroup{groupName='user-controller', position=0, controller=com.oa.controller.UserController}]] 
+11:48:39.519 [main] INFO  s.d.s.w.ClassOrApiAnnotationResourceGrouping - Group for method validateFace was user-controller
+11:48:39.519 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Request mapping: validateFace belongs to groups: [[ResourceGroup{groupName='user-controller', position=0, controller=com.oa.controller.UserController}]] 
+11:48:39.519 [main] INFO  s.d.s.w.ClassOrApiAnnotationResourceGrouping - Group for method findList was user-controller
+11:48:39.519 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Request mapping: findList belongs to groups: [[ResourceGroup{groupName='user-controller', position=0, controller=com.oa.controller.UserController}]] 
+11:48:39.520 [main] INFO  s.d.s.w.ClassOrApiAnnotationResourceGrouping - Group for method register was user-controller
+11:48:39.520 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Request mapping: register belongs to groups: [[ResourceGroup{groupName='user-controller', position=0, controller=com.oa.controller.UserController}]] 
+11:48:39.520 [main] INFO  s.d.s.w.ClassOrApiAnnotationResourceGrouping - Group for method deleteUser was user-controller
+11:48:39.520 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Request mapping: deleteUser belongs to groups: [[ResourceGroup{groupName='user-controller', position=0, controller=com.oa.controller.UserController}]] 
+11:48:39.524 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Created resource listing Path: /v1/login-controller Description: login-controller Position: 0
+11:48:39.525 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Created resource listing Path: /v1/record-controller Description: record-controller Position: 0
+11:48:39.526 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Created resource listing Path: /v1/user-controller Description: user-controller Position: 0
+11:48:39.547 [main] INFO  s.d.schema.ModelContextKeyGenerator - Cache Key Generated: com.alibaba.fastjson.JSONObject(false)
+11:48:39.547 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache models with key com.alibaba.fastjson.JSONObject(false)
+11:48:39.549 [main] INFO  s.d.schema.ModelContextKeyGenerator - Cache Key Generated: com.alibaba.fastjson.JSONObject(false)
+11:48:39.549 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelDependencies with key com.alibaba.fastjson.JSONObject(false)
+11:48:39.556 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: com.alibaba.fastjson.JSONObject(false)
+11:48:39.556 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key com.alibaba.fastjson.JSONObject(false)
+11:48:39.583 [main] INFO  s.d.schema.ModelContextKeyGenerator - Cache Key Generated: com.oa.config.ResponseModel<java.util.Map<java.lang.String,java.lang.Object>>(true)
+11:48:39.583 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache models with key com.oa.config.ResponseModel<java.util.Map<java.lang.String,java.lang.Object>>(true)
+11:48:39.583 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: com.oa.config.ResponseModel<java.util.Map<java.lang.String,java.lang.Object>>(true)
+11:48:39.583 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key com.oa.config.ResponseModel<java.util.Map<java.lang.String,java.lang.Object>>(true)
+11:48:39.597 [main] INFO  s.d.schema.ModelContextKeyGenerator - Cache Key Generated: com.oa.config.ResponseModel<java.util.Map<java.lang.String,java.lang.Object>>(true)
+11:48:39.598 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelDependencies with key com.oa.config.ResponseModel<java.util.Map<java.lang.String,java.lang.Object>>(true)
+11:48:39.598 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: com.oa.config.ResponseModel<java.util.Map<java.lang.String,java.lang.Object>>(true)
+11:48:39.598 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key com.oa.config.ResponseModel<java.util.Map<java.lang.String,java.lang.Object>>(true)
+11:48:39.600 [main] INFO  s.d.s.web.OperationsKeyGenerator - Cache key generated: /login/miniprogram.com.oa.controller.LoginController.miniProgramLogin.DefaultGenericTypeNamingStrategy
+11:48:39.600 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache operations with key /login/miniprogram.com.oa.controller.LoginController.miniProgramLogin.DefaultGenericTypeNamingStrategy
+11:48:39.615 [main] INFO  s.d.s.w.ClassOrApiAnnotationResourceGrouping - Group for method miniProgramLogin was login-controller
+11:48:39.619 [main] INFO  s.d.s.w.ClassOrApiAnnotationResourceGrouping - Group for method miniProgramLogin was login-controller
+11:48:39.642 [main] INFO  s.d.schema.ModelContextKeyGenerator - Cache Key Generated: com.oa.config.ResponseModel(true)
+11:48:39.642 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache models with key com.oa.config.ResponseModel(true)
+11:48:39.643 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: com.oa.config.ResponseModel(true)
+11:48:39.643 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key com.oa.config.ResponseModel(true)
+11:48:39.644 [main] INFO  s.d.schema.ModelContextKeyGenerator - Cache Key Generated: com.oa.config.ResponseModel(true)
+11:48:39.644 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelDependencies with key com.oa.config.ResponseModel(true)
+11:48:39.645 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: com.oa.config.ResponseModel(true)
+11:48:39.645 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key com.oa.config.ResponseModel(true)
+11:48:39.645 [main] INFO  s.d.s.web.OperationsKeyGenerator - Cache key generated: /record/list/{openId}.com.oa.controller.RecordController.list.DefaultGenericTypeNamingStrategy
+11:48:39.645 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache operations with key /record/list/{openId}.com.oa.controller.RecordController.list.DefaultGenericTypeNamingStrategy
+11:48:39.651 [main] INFO  s.d.s.w.ClassOrApiAnnotationResourceGrouping - Group for method list was record-controller
+11:48:39.654 [main] INFO  s.d.s.w.ClassOrApiAnnotationResourceGrouping - Group for method list was record-controller
+11:48:39.657 [main] INFO  s.d.schema.ModelContextKeyGenerator - Cache Key Generated: com.oa.config.ResponseModel(true)
+11:48:39.657 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache models with key com.oa.config.ResponseModel(true)
+11:48:39.658 [main] INFO  s.d.schema.ModelContextKeyGenerator - Cache Key Generated: com.oa.config.ResponseModel(true)
+11:48:39.658 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelDependencies with key com.oa.config.ResponseModel(true)
+11:48:39.658 [main] INFO  s.d.schema.ModelContextKeyGenerator - Cache Key Generated: com.oa.entity.Record(false)
+11:48:39.658 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache models with key com.oa.entity.Record(false)
+11:48:39.658 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: com.oa.entity.Record(false)
+11:48:39.658 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key com.oa.entity.Record(false)
+11:48:39.664 [main] INFO  s.d.schema.ModelContextKeyGenerator - Cache Key Generated: com.oa.entity.Record(false)
+11:48:39.664 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelDependencies with key com.oa.entity.Record(false)
+11:48:39.664 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: com.oa.entity.Record(false)
+11:48:39.664 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key com.oa.entity.Record(false)
+11:48:39.665 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: java.sql.Timestamp(false)
+11:48:39.665 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key java.sql.Timestamp(false)
+11:48:39.672 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: java.sql.Timestamp(false)
+11:48:39.672 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key java.sql.Timestamp(false)
+11:48:39.672 [main] INFO  s.d.s.web.OperationsKeyGenerator - Cache key generated: /record.com.oa.controller.RecordController.punchTheClock.DefaultGenericTypeNamingStrategy
+11:48:39.673 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache operations with key /record.com.oa.controller.RecordController.punchTheClock.DefaultGenericTypeNamingStrategy
+11:48:39.675 [main] INFO  s.d.s.w.ClassOrApiAnnotationResourceGrouping - Group for method punchTheClock was record-controller
+11:48:39.676 [main] INFO  s.d.s.w.ClassOrApiAnnotationResourceGrouping - Group for method punchTheClock was record-controller
+11:48:39.677 [main] INFO  s.d.schema.ModelContextKeyGenerator - Cache Key Generated: com.oa.config.ResponseModel(true)
+11:48:39.678 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache models with key com.oa.config.ResponseModel(true)
+11:48:39.678 [main] INFO  s.d.schema.ModelContextKeyGenerator - Cache Key Generated: com.oa.config.ResponseModel(true)
+11:48:39.678 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelDependencies with key com.oa.config.ResponseModel(true)
+11:48:39.678 [main] INFO  s.d.s.web.OperationsKeyGenerator - Cache key generated: /user/{openId}.com.oa.controller.UserController.deleteUser.DefaultGenericTypeNamingStrategy
+11:48:39.678 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache operations with key /user/{openId}.com.oa.controller.UserController.deleteUser.DefaultGenericTypeNamingStrategy
+11:48:39.680 [main] INFO  s.d.s.w.ClassOrApiAnnotationResourceGrouping - Group for method deleteUser was user-controller
+11:48:39.681 [main] INFO  s.d.s.w.ClassOrApiAnnotationResourceGrouping - Group for method deleteUser was user-controller
+11:48:39.683 [main] INFO  s.d.schema.ModelContextKeyGenerator - Cache Key Generated: com.oa.config.ResponseModel<com.baomidou.mybatisplus.plugins.Page<com.oa.entity.User>>(true)
+11:48:39.684 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache models with key com.oa.config.ResponseModel<com.baomidou.mybatisplus.plugins.Page<com.oa.entity.User>>(true)
+11:48:39.684 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: com.oa.config.ResponseModel<com.baomidou.mybatisplus.plugins.Page<com.oa.entity.User>>(true)
+11:48:39.684 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key com.oa.config.ResponseModel<com.baomidou.mybatisplus.plugins.Page<com.oa.entity.User>>(true)
+11:48:39.685 [main] INFO  s.d.schema.ModelContextKeyGenerator - Cache Key Generated: com.oa.config.ResponseModel<com.baomidou.mybatisplus.plugins.Page<com.oa.entity.User>>(true)
+11:48:39.685 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelDependencies with key com.oa.config.ResponseModel<com.baomidou.mybatisplus.plugins.Page<com.oa.entity.User>>(true)
+11:48:39.686 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: com.oa.entity.User(true)
+11:48:39.686 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key com.oa.entity.User(true)
+11:48:39.689 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: java.sql.Timestamp(true)
+11:48:39.689 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key java.sql.Timestamp(true)
+11:48:39.692 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: com.baomidou.mybatisplus.plugins.Page<com.oa.entity.User>(true)
+11:48:39.693 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key com.baomidou.mybatisplus.plugins.Page<com.oa.entity.User>(true)
+11:48:39.698 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: com.oa.entity.User(true)
+11:48:39.698 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key com.oa.entity.User(true)
+11:48:39.698 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: java.sql.Timestamp(true)
+11:48:39.698 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key java.sql.Timestamp(true)
+11:48:39.698 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: com.oa.config.ResponseModel<com.baomidou.mybatisplus.plugins.Page<com.oa.entity.User>>(true)
+11:48:39.698 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key com.oa.config.ResponseModel<com.baomidou.mybatisplus.plugins.Page<com.oa.entity.User>>(true)
+11:48:39.699 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: com.oa.entity.User(true)
+11:48:39.699 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key com.oa.entity.User(true)
+11:48:39.699 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: java.sql.Timestamp(true)
+11:48:39.699 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key java.sql.Timestamp(true)
+11:48:39.699 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: com.baomidou.mybatisplus.plugins.Page<com.oa.entity.User>(true)
+11:48:39.699 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key com.baomidou.mybatisplus.plugins.Page<com.oa.entity.User>(true)
+11:48:39.700 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: com.oa.entity.User(true)
+11:48:39.700 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key com.oa.entity.User(true)
+11:48:39.700 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: java.sql.Timestamp(true)
+11:48:39.700 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key java.sql.Timestamp(true)
+11:48:39.701 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: com.baomidou.mybatisplus.plugins.Page<com.oa.entity.User>(true)
+11:48:39.701 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key com.baomidou.mybatisplus.plugins.Page<com.oa.entity.User>(true)
+11:48:39.701 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: com.oa.entity.User(true)
+11:48:39.701 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key com.oa.entity.User(true)
+11:48:39.701 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: java.sql.Timestamp(true)
+11:48:39.701 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key java.sql.Timestamp(true)
+11:48:39.702 [main] INFO  s.d.s.web.OperationsKeyGenerator - Cache key generated: /user/pageList.com.oa.controller.UserController.findList.DefaultGenericTypeNamingStrategy
+11:48:39.702 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache operations with key /user/pageList.com.oa.controller.UserController.findList.DefaultGenericTypeNamingStrategy
+11:48:39.704 [main] INFO  s.d.s.w.ClassOrApiAnnotationResourceGrouping - Group for method findList was user-controller
+11:48:39.706 [main] INFO  s.d.s.w.ClassOrApiAnnotationResourceGrouping - Group for method findList was user-controller
+11:48:39.709 [main] INFO  s.d.schema.ModelContextKeyGenerator - Cache Key Generated: com.oa.config.ResponseModel(true)
+11:48:39.709 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache models with key com.oa.config.ResponseModel(true)
+11:48:39.710 [main] INFO  s.d.schema.ModelContextKeyGenerator - Cache Key Generated: com.oa.config.ResponseModel(true)
+11:48:39.710 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelDependencies with key com.oa.config.ResponseModel(true)
+11:48:39.710 [main] INFO  s.d.s.web.OperationsKeyGenerator - Cache key generated: /user/exist/{openId}.com.oa.controller.UserController.findOneUser.DefaultGenericTypeNamingStrategy
+11:48:39.710 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache operations with key /user/exist/{openId}.com.oa.controller.UserController.findOneUser.DefaultGenericTypeNamingStrategy
+11:48:39.711 [main] INFO  s.d.s.w.ClassOrApiAnnotationResourceGrouping - Group for method findOneUser was user-controller
+11:48:39.712 [main] INFO  s.d.s.w.ClassOrApiAnnotationResourceGrouping - Group for method findOneUser was user-controller
+11:48:39.714 [main] INFO  s.d.schema.ModelContextKeyGenerator - Cache Key Generated: com.oa.config.ResponseModel(true)
+11:48:39.714 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache models with key com.oa.config.ResponseModel(true)
+11:48:39.714 [main] INFO  s.d.schema.ModelContextKeyGenerator - Cache Key Generated: com.oa.config.ResponseModel(true)
+11:48:39.714 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelDependencies with key com.oa.config.ResponseModel(true)
+11:48:39.715 [main] INFO  s.d.schema.ModelContextKeyGenerator - Cache Key Generated: com.oa.entity.User(false)
+11:48:39.715 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache models with key com.oa.entity.User(false)
+11:48:39.715 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: com.oa.entity.User(false)
+11:48:39.715 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key com.oa.entity.User(false)
+11:48:39.717 [main] INFO  s.d.schema.ModelContextKeyGenerator - Cache Key Generated: com.oa.entity.User(false)
+11:48:39.717 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelDependencies with key com.oa.entity.User(false)
+11:48:39.718 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: com.oa.entity.User(false)
+11:48:39.718 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key com.oa.entity.User(false)
+11:48:39.718 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: java.sql.Timestamp(false)
+11:48:39.718 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key java.sql.Timestamp(false)
+11:48:39.719 [main] INFO  s.d.s.p.ModelPropertiesKeyGenerator - Cache key generated: java.sql.Timestamp(false)
+11:48:39.719 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelProperties with key java.sql.Timestamp(false)
+11:48:39.719 [main] INFO  s.d.s.web.OperationsKeyGenerator - Cache key generated: /user/register.com.oa.controller.UserController.register.DefaultGenericTypeNamingStrategy
+11:48:39.719 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache operations with key /user/register.com.oa.controller.UserController.register.DefaultGenericTypeNamingStrategy
+11:48:39.722 [main] INFO  s.d.s.w.ClassOrApiAnnotationResourceGrouping - Group for method register was user-controller
+11:48:39.722 [main] INFO  s.d.s.w.ClassOrApiAnnotationResourceGrouping - Group for method register was user-controller
+11:48:39.725 [main] INFO  s.d.schema.ModelContextKeyGenerator - Cache Key Generated: com.oa.config.ResponseModel(true)
+11:48:39.725 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache models with key com.oa.config.ResponseModel(true)
+11:48:39.726 [main] INFO  s.d.schema.ModelContextKeyGenerator - Cache Key Generated: com.oa.config.ResponseModel(true)
+11:48:39.726 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache modelDependencies with key com.oa.config.ResponseModel(true)
+11:48:39.726 [main] INFO  s.d.s.web.OperationsKeyGenerator - Cache key generated: /user/face/{openId}.com.oa.controller.UserController.validateFace.DefaultGenericTypeNamingStrategy
+11:48:39.726 [main] INFO  s.d.spring.web.caching.CachingAspect - Caching aspect applied for cache operations with key /user/face/{openId}.com.oa.controller.UserController.validateFace.DefaultGenericTypeNamingStrategy
+11:48:39.728 [main] INFO  s.d.s.w.ClassOrApiAnnotationResourceGrouping - Group for method validateFace was user-controller
+11:48:39.730 [main] INFO  s.d.s.w.ClassOrApiAnnotationResourceGrouping - Group for method validateFace was user-controller
+11:48:39.746 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-21019"]
+11:48:39.761 [main] INFO  o.a.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+11:48:39.779 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat started on port(s): 21019 (http)
+11:48:39.786 [main] INFO  com.oa.SpringbootApplication - Started SpringbootApplication in 14.761 seconds (JVM running for 17.062)
+11:48:58.049 [http-nio-21019-exec-2] INFO  o.a.c.c.C.[.[localhost].[/api/v1] - Initializing Spring FrameworkServlet 'dispatcherServlet'
+11:48:58.049 [http-nio-21019-exec-2] INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization started
+11:48:58.114 [http-nio-21019-exec-2] INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization completed in 65 ms
