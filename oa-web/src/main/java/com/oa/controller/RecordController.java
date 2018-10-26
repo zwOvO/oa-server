@@ -33,6 +33,7 @@ public class RecordController {
         @ApiImplicitParam(name = "uuid", value = "打卡记录标识", required = true, dataType = "String",paramType = "path"),
         @ApiImplicitParam(name = "openId", value = "打卡记录标识", required = true, dataType = "String",paramType = "form")
     })
+
     @PostMapping()
     public ResponseModel punchTheClock(@RequestBody Record record) throws Exception{
         boolean res = recordService.insert(record);

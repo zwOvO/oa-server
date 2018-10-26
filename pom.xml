@@ -48,15 +48,20 @@
         <velocity.version>1.7</velocity.version>
         <springfox-swagger2.version>2.2.2</springfox-swagger2.version>
         <guava.version>18.0</guava.version>
+        <quartz.version>2.3.0</quartz.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-            <!--UserLib-->
             <dependency>
                 <groupId>com.baidu.aip</groupId>
                 <artifactId>java-sdk</artifactId>
                 <version>4.7.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.quartz-scheduler</groupId>
+                <artifactId>quartz</artifactId>
+                <version>${quartz.version}</version>
             </dependency>
 
 
