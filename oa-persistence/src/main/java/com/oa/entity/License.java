@@ -31,8 +31,8 @@ public class License extends Model<License> {
     /**
      * 授权码
      */
-    @TableId(value = "id",type = IdType.UUID)
-    private String id;
+    @TableId(value = "license",type = IdType.UUID)
+    private String license;
     /**
      * 用户标识
      */
@@ -51,7 +51,7 @@ public class License extends Model<License> {
 
     @Override
     protected Serializable pkVal() {
-        return this.id;
+        return this.license;
     }
 
 }

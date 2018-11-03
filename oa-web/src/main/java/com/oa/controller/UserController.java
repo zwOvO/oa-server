@@ -6,7 +6,9 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.oa.base.PublicResultConstant;
 import com.oa.config.ResponseHelper;
 import com.oa.config.ResponseModel;
+import com.oa.entity.License;
 import com.oa.entity.User;
+import com.oa.service.ILicenseService;
 import com.oa.service.IUserService;
 import com.oa.util.ComUtil;
 import io.swagger.annotations.ApiImplicitParam;
@@ -18,6 +20,9 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import springfox.documentation.service.ResponseMessage;
+
+import java.util.HashMap;
 
 /**
  * @author zhengwen
@@ -30,6 +35,8 @@ public class UserController {
 
     @Autowired
     IUserService userService;
+    @Autowired
+    ILicenseService licenseService;
 
     @GetMapping(value = "/pageList")
     public ResponseModel<Page<User>> findList(@RequestParam(name = "pageIndex", defaultValue = "1", required = false) Integer pageIndex,
@@ -90,14 +97,38 @@ public class UserController {
         }
     }
 
+    @PostMapping("/bindLicense/{openId}/{licenseStr}")
+    public ResponseModel bindLicense (@PathVariable("openId") String openId,@PathVariable("licenseStr")String licenseStr) throws Exception{
+        License license =  licenseService.selectById(licenseStr);
+        if(license !=null){
+            if(license.getStatus() == 1){
+                if(license.getOpenId().equals(openId)){
+                    return ResponseHelper.buildResponseModel(PublicResultConstant.SUCCESS);
+                }else {
+                    return ResponseHelper.validationFailure(PublicResultConstant.PARAM_ERROR);
+                }
+            }else {
+                license.setOpenId(openId);
+                license.setStatus(1);
+                boolean res = licenseService.update(license, new EntityWrapper<License>().eq("license", licenseStr));
+                if (res)
+                    return ResponseHelper.buildResponseModel(PublicResultConstant.SUCCESS);
+                else
+                    return ResponseHelper.validationFailure(PublicResultConstant.FAILED);
+            }
+        }else
+            return ResponseHelper.validationFailure(PublicResultConstant.ERROR);
+    }
+
 
     @PostMapping("/register")
     public ResponseModel register (@RequestBody User user) throws Exception{
+
         boolean res = userService.insertOrUpdate(user);
         if(res)
-            return ResponseHelper.buildResponseModel("成功");
+            return ResponseHelper.buildResponseModel(PublicResultConstant.SUCCESS);
         else
-            return ResponseHelper.buildResponseModel("失败");
+            return ResponseHelper.validationFailure(PublicResultConstant.ERROR);
     }
 }
 

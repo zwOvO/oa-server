@@ -43,7 +43,7 @@ public class RecordController {
             return ResponseHelper.validationFailure(PublicResultConstant.ERROR);
     }
 
-    @ApiOperation(value="获取所有用户所有打卡记录", notes="获取所有用户所有打卡记录")
+    @ApiOperation(value="分页获取指定用户打卡记录", notes="分页获取指定用户打卡记录")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "openId", value = "用户标识", required = false, dataType = "String",paramType = "path"),
             @ApiImplicitParam(name = "current", value = "0", required = false, dataType = "int",paramType="query"),
@@ -60,7 +60,7 @@ public class RecordController {
             return ResponseHelper.notFound(PublicResultConstant.DATA_ERROR);
     }
 
-    @ApiOperation(value="获取所有用户所有打卡记录", notes="获取所有用户所有打卡记录")
+    @ApiOperation(value="获取用户指定日期所有打卡记录", notes="获取用户指定日期所有打卡记录")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "openId", value = "用户标识", required = false, dataType = "String",paramType = "path"),
             @ApiImplicitParam(name = "date", value = "查询日期2018-10-25", required = false, dataType = "String", paramType = "query")

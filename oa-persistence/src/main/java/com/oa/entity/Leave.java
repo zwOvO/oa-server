@@ -38,12 +38,21 @@ public class Leave extends Model<Leave> {
      */
     @TableField("open_id")
     private String openId;
-
     /**
-     * 请假状态（0：未审核、1：通过、2：拒绝）
+     * 请假理由
      */
     @TableField("message")
     private String message;
+    /**
+     * 请假类型（0：事假、1：婚假、2：丧假、3：产假、5：年假、6：调休、7：病假）
+     */
+    @TableField("leave_type")
+    private int leaveType;
+    /**
+     * 请假状态（0：未审核、1：通过、2：拒绝）
+     */
+    @TableField("status")
+    private int status;
     /**
      * 请假时间
      */
