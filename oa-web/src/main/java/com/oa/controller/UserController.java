@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import springfox.documentation.service.ResponseMessage;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author zhengwen
@@ -47,6 +48,15 @@ public class UserController {
             ew.like("username", username);
         }
         return ResponseHelper.buildResponseModel(userService.selectPage(new Page<>(pageIndex, pageSize), ew));
+    }
+
+    @GetMapping(value = "/list")
+    public ResponseModel allList() {
+        List<User> records = userService.selectList(new EntityWrapper<User>().orderBy("create_time",false));
+        if(records.size()>0)
+            return ResponseHelper.buildResponseModel(records);
+        else
+            return ResponseHelper.notFound(PublicResultConstant.DATA_ERROR);
     }
 
     @ApiOperation(value="判断当前用户是否存在", notes="根据url的id来查询账号是否存在")
