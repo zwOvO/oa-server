@@ -1,5 +1,6 @@
 package com.oa.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.oa.base.PublicResultConstant;
@@ -66,6 +67,23 @@ public class LeaveController {
     public ResponseModel summit(@PathVariable("openId")String openId, @ApiIgnore @RequestBody Leave leave) {
         leave.setOpenId(openId);
         boolean res = leaveService.insert(leave);
+        if(res)
+            return ResponseHelper.buildResponseModel("成功");
+        else
+            return ResponseHelper.notFound(PublicResultConstant.DATA_ERROR);
+    }
+
+    @ApiOperation(value="管理员审批请假", notes="管理员审批请假")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "请假标识", required = true, dataType = "String",paramType = "body"),
+            @ApiImplicitParam(name = "status", value = "审批结果", required = true, dataType = "int",paramType="body"),
+//            @ApiImplicitParam(name = "message", value = "审批理由", required = true, dataType = "String",paramType="form")
+    })
+    @PutMapping("/audit")
+    public ResponseModel audit(@RequestBody JSONObject json) {
+        Leave leave = leaveService.selectById(json.getString("id"));
+        leave.setStatus(json.getInteger("status"));
+        boolean res = leaveService.updateById(leave);
         if(res)
             return ResponseHelper.buildResponseModel("成功");
         else
