@@ -32,18 +32,18 @@ public class Record extends Model<Record> {
     /**
      * 主键
      */
-    @TableId(value = "id",type = IdType.UUID)
+    @TableId(value = "id",type = IdType.INPUT)
     private String id;
     /**
-     * 日志描述
+     * 用户标识
      */
     @TableField("open_id")
     private String openId;
     /**
-     * 打卡时机（1：上午上班，2：中午下班，3：下午上班，4：下午下班）
+     * 刷脸是否通过（0：未通过，1：通过）
      */
-    @TableField("record_type")
-    private int recordType;
+    @TableField("status")
+    private int status;
     /**
      * 打卡时间
      */

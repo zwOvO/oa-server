@@ -42,6 +42,14 @@ public class RecordController {
         else
             return ResponseHelper.validationFailure(PublicResultConstant.ERROR);
     }
+    @GetMapping("/list")
+    public ResponseModel list() {
+        List<Record> records = recordService.selectList(new EntityWrapper<Record>().eq("status",1).orderBy("create_time",false));
+        if(records.size()>0)
+            return ResponseHelper.buildResponseModel(records);
+        else
+            return ResponseHelper.notFound(PublicResultConstant.DATA_ERROR);
+    }
 
     @ApiOperation(value="分页获取指定用户打卡记录", notes="分页获取指定用户打卡记录")
     @ApiImplicitParams({
