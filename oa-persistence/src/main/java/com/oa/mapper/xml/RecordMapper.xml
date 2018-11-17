@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oa.mapper.RecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="RecordVOResultMap" type="com.oa.entity.vo.RecordVO">
+        <id column="open_id" property="openId" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+    <sql id="orderByCreateTimeASC">
+        order by create_time desc
+    </sql>
+
+    <select id="selectRecordVOList" resultMap="RecordVOResultMap" parameterType="com.oa.entity.dto.RecordQuery">
+        SELECT r.*,u.username FROM tb_record r JOIN tb_user u ON r.open_id = u.open_id
+        <where>
+            r.status = 1
+            <if test="openId != null and openId != ''">
+                and r.open_id = #{openId}
+            </if>
+            <if test="username != null and username != ''">
+                and u.username like concat('%',#{username},'%')
+            </if>
+            <if test="month != null and month != ''">
+                and r.create_time like concat(#{month},'%')
+            </if>
+        </where>
+        <include refid="orderByCreateTimeASC"></include>
+    </select>
+</mapper>

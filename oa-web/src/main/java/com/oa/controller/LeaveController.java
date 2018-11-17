@@ -7,6 +7,8 @@ import com.oa.base.PublicResultConstant;
 import com.oa.config.ResponseHelper;
 import com.oa.config.ResponseModel;
 import com.oa.entity.Leave;
+import com.oa.entity.dto.LeaveQuery;
+import com.oa.entity.vo.LeaveVO;
 import com.oa.service.ILeaveService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -34,12 +36,9 @@ public class LeaveController {
 
     @ApiOperation(value="获取所有用户请假记录", notes="所有用户请假记录")
     @GetMapping("/list")
-    public ResponseModel allList() {
-        List<Leave> records = leaveService.selectList(new EntityWrapper<Leave>().orderBy("create_time",false));
-        if(records.size()>0)
-            return ResponseHelper.buildResponseModel(records);
-        else
-            return ResponseHelper.notFound(PublicResultConstant.DATA_ERROR);
+    public ResponseModel allList(LeaveQuery leaveQuery) {
+        List<LeaveVO> records = leaveService.selectLeaveVOList(leaveQuery);
+        return ResponseHelper.buildResponseModel(records);
     }
 
     @ApiOperation(value="分页获取指定用户请假记录", notes="获取指定用户请假记录")

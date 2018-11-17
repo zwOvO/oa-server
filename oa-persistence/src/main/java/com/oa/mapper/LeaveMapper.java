@@ -3,7 +3,11 @@ package com.oa.mapper;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.oa.entity.Leave;
 import com.oa.entity.Record;
+import com.oa.entity.dto.LeaveQuery;
+import com.oa.entity.vo.LeaveVO;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * <p>
@@ -15,6 +19,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface LeaveMapper extends BaseMapper<Leave> {
-
-
+    List<LeaveVO> selectLeaveVOList(LeaveQuery query);
 }

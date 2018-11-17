@@ -6,6 +6,8 @@ import com.oa.base.PublicResultConstant;
 import com.oa.config.ResponseHelper;
 import com.oa.config.ResponseModel;
 import com.oa.entity.Record;
+import com.oa.entity.dto.RecordQuery;
+import com.oa.entity.vo.RecordVO;
 import com.oa.service.IRecordService;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,27 +31,24 @@ public class RecordController {
     @Autowired
     IRecordService recordService;
 
-    @ApiOperation(value="判断当前用户是否存在", notes="根据url的id来查询账号是否存在")
+    @ApiOperation(value="打卡", notes="打卡")
     @ApiImplicitParams({
-        @ApiImplicitParam(name = "uuid", value = "打卡记录标识", required = true, dataType = "String",paramType = "path"),
-        @ApiImplicitParam(name = "openId", value = "打卡记录标识", required = true, dataType = "String",paramType = "form")
+        @ApiImplicitParam(name = "uuid", value = "打卡记录标识", required = true, dataType = "String",paramType = "body"),
+        @ApiImplicitParam(name = "openId", value = "打卡记录标识", required = true, dataType = "String",paramType = "body")
     })
-
     @PostMapping()
-    public ResponseModel punchTheClock(@RequestBody Record record) throws Exception{
+    public ResponseModel punchTheClock(@ApiIgnore @RequestBody Record record) throws Exception{
         boolean res = recordService.insert(record);
         if(res)
             return ResponseHelper.buildResponseModel(PublicResultConstant.SUCCESS);
         else
             return ResponseHelper.validationFailure(PublicResultConstant.ERROR);
     }
+
     @GetMapping("/list")
-    public ResponseModel list() {
-        List<Record> records = recordService.selectList(new EntityWrapper<Record>().eq("status",1).orderBy("create_time",false));
-        if(records.size()>0)
-            return ResponseHelper.buildResponseModel(records);
-        else
-            return ResponseHelper.notFound(PublicResultConstant.DATA_ERROR);
+    public ResponseModel list(RecordQuery recordQuery) {
+        List<RecordVO> records = recordService.selectRecordVOList(recordQuery);
+        return ResponseHelper.buildResponseModel(records);
     }
 
     @ApiOperation(value="分页获取指定用户打卡记录", notes="分页获取指定用户打卡记录")

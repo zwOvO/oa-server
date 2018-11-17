@@ -24,8 +24,6 @@ public class PublicResultConstant {
 
     public static final String INVALID_USER  = "用户不存在";
 
-    public static final String INVALID_ROLE  = "角色不存在";
-
     public static final String ROLE_USER_USED  = "角色使用中，不可删除";
 
     public static final String USER_NO_PERMITION  = "当前用户无该接口权限";
@@ -37,4 +35,6 @@ public class PublicResultConstant {
     public static final String MOBILE_ERROR  = "手机号格式错误";
 
     public static final String USER_EXIST  = "用户已存在";
+
+    public static final String INVALID_Record  = "记录不存在";
 }

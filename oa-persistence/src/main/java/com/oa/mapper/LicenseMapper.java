@@ -3,7 +3,10 @@ package com.oa.mapper;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.oa.entity.License;
 import com.oa.entity.Record;
+import com.oa.entity.vo.LicenseVO;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * <p>
@@ -15,6 +18,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface LicenseMapper extends BaseMapper<License> {
-
-
+    List<LicenseVO> selectLicenseVOList();
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oa.mapper.LeaveMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="LeaveVOResultMap" type="com.oa.entity.vo.LeaveVO">
+        <id column="open_id" property="openId" />
+        <result column="leave_type" property="leaveType" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+    <sql id="orderByCreateTimeASC">
+        order by status asc,create_time desc
+    </sql>
+
+    <select id="selectLeaveVOList" resultMap="LeaveVOResultMap" parameterType="com.oa.entity.dto.LeaveQuery">
+        SELECT l.*,u.username FROM tb_leave l JOIN tb_user u ON l.open_id = u.open_id
+        <where>
+            <if test="openId != null and openId != ''">
+                and l.open_id = #{openId}
+            </if>
+            <if test="username != null and username != ''">
+                and u.username like concat('%',#{username},'%')
+            </if>
+            <if test="leaveType != null and leaveType != -1">
+                and l.leave_type = #{leaveType}
+            </if>
+            <if test="status != null and status != -1">
+                and l.status = #{status}
+            </if>
+            <if test="month != null and month != ''">
+                and l.create_time like concat(#{month},'%')
+            </if>
+        </where>
+        <include refid="orderByCreateTimeASC"></include>
+    </select>
+</mapper>
