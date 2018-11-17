@@ -14,6 +14,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -38,7 +39,13 @@ public class LicenseControl {
     @GetMapping
     public ResponseModel list() {
         List<LicenseVO> records = licenseService.selectLicenseVOList();
-        return ResponseHelper.buildResponseModel(records);
+        ResponseModel responseModel = ResponseHelper.buildResponseModel(records);
+        if(records.size()>0) {
+            return responseModel;
+        }else{
+            responseModel.setCode(HttpStatus.NOT_FOUND.getReasonPhrase());
+            return responseModel;
+        }
     }
 
     @ApiOperation(value="添加授权码", notes="添加授权码")
