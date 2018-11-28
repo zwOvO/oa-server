@@ -3,6 +3,7 @@ package com.oa.service.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.oa.entity.dto.UserQuery;
 import com.oa.service.IUserService;
 import com.oa.entity.User;
 import com.oa.mapper.UserMapper;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * <p>
@@ -143,5 +145,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         }catch (Exception e){
             return null;
         }
+    }
+
+    @Override
+    public List<User> selectUserList(UserQuery userQuery) {
+        List<User> userList= userMapper.selectUserList(userQuery);
+        return userList;
     }
 }

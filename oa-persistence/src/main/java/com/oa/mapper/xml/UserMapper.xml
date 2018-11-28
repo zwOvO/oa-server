@@ -5,13 +5,42 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.oa.entity.User">
         <id column="open_id" property="openId" />
-        <result column="user_name" property="username" />
+        <result column="username" property="username" />
         <result column="avatar" property="avatar" />
+        <result column="face_token" property="faceToken" />
         <result column="gender" property="gender" />
         <result column="create_time" property="createTime" />
     </resultMap>
+    <sql id="orderByCreateTimeASC">
+        order by create_time desc
+    </sql>
 
     <update id="updateFaceTokenById">
         update tb_user set face_token = #{faceToken} where open_id = #{openId}
     </update>
+
+    <select id="selectUserList" resultMap="BaseResultMap" parameterType="com.oa.entity.dto.UserQuery">
+        SELECT * FROM  tb_user
+        <where>
+            <if test="openId != null and openId != ''">
+                and open_id = #{openId}
+            </if>
+            <if test="username != null and username != ''">
+                and username like concat('%',#{username},'%')
+            </if>
+            <if test="nickname != null and nickname != ''">
+                and nickname like concat('%',#{nickname},'%')
+            </if>
+            <if test="gender != 0">
+                and gender = #{gender}
+            </if>
+            <if test="status != 0">
+                and status = #{status}
+            </if>
+            <if test="month != null and month != ''">
+                and create_time like concat(#{month},'%')
+            </if>
+        </where>
+        <include refid="orderByCreateTimeASC"></include>
+    </select>
 </mapper>

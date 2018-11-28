@@ -4,8 +4,11 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.oa.base.BaseService;
 import com.oa.entity.User;
 import com.baomidou.mybatisplus.service.IService;
+import com.oa.entity.dto.UserQuery;
+import org.apache.ibatis.annotations.Param;
 
 import java.io.InputStream;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -36,4 +39,6 @@ public interface IUserService extends BaseService<User> {
     boolean deleteByUserNo(String userNo);
 
     String validateFace(InputStream is, String groupId, String userId, boolean isInsert);
+
+    List<User> selectUserList(@Param("query") UserQuery recordQuery);
 }

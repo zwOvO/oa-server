@@ -7,7 +7,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class LeaveQuery extends baseListQuery {
-    private int leaveType;
+public class UserQuery extends baseListQuery {
+    private String nickname;
     private int status;
+    private int gender;
 }

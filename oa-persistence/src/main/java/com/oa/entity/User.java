@@ -59,6 +59,11 @@ public class User extends Model<User> {
     @TableField("gender")
     private int gender;
     /**
+     * 状态（0：禁用，1：启用）
+     */
+    @TableField("status")
+    private int status;
+    /**
      * 创建时间
      */
     @TableField("create_time")

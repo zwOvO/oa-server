@@ -8,6 +8,7 @@ import com.oa.config.ResponseHelper;
 import com.oa.config.ResponseModel;
 import com.oa.entity.License;
 import com.oa.entity.User;
+import com.oa.entity.dto.UserQuery;
 import com.oa.service.ILicenseService;
 import com.oa.service.IUserService;
 import com.oa.util.ComUtil;
@@ -17,6 +18,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
@@ -47,12 +49,15 @@ public class UserController {
     }
 
     @GetMapping(value = "/list")
-    public ResponseModel allList() {
-        List<User> records = userService.selectList(new EntityWrapper<User>().orderBy("create_time",false));
-        if(records.size()>0)
-            return ResponseHelper.buildResponseModel(records);
-        else
-            return ResponseHelper.notFound(PublicResultConstant.DATA_ERROR);
+    public ResponseModel allList(UserQuery userQuery) {
+        List<User> records = userService.selectUserList(userQuery);
+        ResponseModel responseModel = ResponseHelper.buildResponseModel(records);
+        if(records.size()>0) {
+            return responseModel;
+        }else{
+            responseModel.setCode(HttpStatus.NOT_FOUND.getReasonPhrase());
+            return responseModel;
+        }
     }
 
     @ApiOperation(value="判断当前用户是否存在", notes="根据url的id来查询账号是否存在")
@@ -126,6 +131,18 @@ public class UserController {
             return ResponseHelper.validationFailure(PublicResultConstant.ERROR);
     }
 
+    @PutMapping("/{openId}")
+    public ResponseModel update (@PathVariable("openId") String openId,@RequestBody User user) throws Exception{
+        User userTemp = userService.selectById(user.getOpenId());
+        userTemp.setGender(user.getGender());
+        userTemp.setUsername(user.getNickname());
+        userTemp.setStatus(user.getStatus());
+        boolean res = userService.updateById(userTemp);
+        if(res)
+            return ResponseHelper.buildResponseModel(PublicResultConstant.SUCCESS);
+        else
+            return ResponseHelper.validationFailure(PublicResultConstant.ERROR);
+    }
 
     @PostMapping("/register")
     public ResponseModel register (@RequestBody User user) throws Exception{
