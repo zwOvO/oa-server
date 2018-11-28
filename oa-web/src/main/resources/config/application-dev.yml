@@ -1,0 +1,49 @@
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: UTF-8
+
+banner:
+  location: config/my.txt
+
+controller:
+  scanPackage: com.oa.controller
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://106.12.152.251:3306/oa?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: test66315
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,wall,log4j
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    useGlobalDataSourceStat: true
+mybatis-plus:
+  mapper-locations: classpath:/com/oa/mapper/xml/*Mapper.xml
+  typeAliasesPackage: com.oa.entity
+  global-config:
+    id-type: 3
+    field-strategy: 2
+    db-column-underline: true
+  configuration:map-underscore-to-camel-case: true
+  cache-enabled: false
+  jdbc-type-for-null: 'null'
+logging:
+  config: classpath:config/logback-spring.xml
+  level.root :  info
+  path :  logs/
+  file :  oa.log
+

@@ -20,6 +20,22 @@ public class ResponseHelper {
         return response;
     }
 
+    public static <T> ResponseModel<T> FORBIDDEN(String message) {
+        ResponseModel response = new ResponseModel();
+        response.setStatus(HttpStatus.FORBIDDEN.value());
+        response.setCode(HttpStatus.FORBIDDEN.getReasonPhrase());
+        response.setMessage(message);
+        return response;
+    }
+
+    public static <T> ResponseModel<T> UNAUTHORIZED(String message) {
+        ResponseModel response = new ResponseModel();
+        response.setStatus(HttpStatus.UNAUTHORIZED.value());
+        response.setCode(HttpStatus.UNAUTHORIZED.getReasonPhrase());
+        response.setMessage(message);
+        return response;
+    }
+
     public static <T> ResponseModel<T> internalServerError(String message) {
         ResponseModel response = new ResponseModel();
         response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());

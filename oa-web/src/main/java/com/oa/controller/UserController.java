@@ -8,7 +8,9 @@ import com.oa.config.ResponseHelper;
 import com.oa.config.ResponseModel;
 import com.oa.entity.License;
 import com.oa.entity.User;
+import com.oa.entity.dto.LoginDTO;
 import com.oa.entity.dto.UserQuery;
+import com.oa.entity.vo.LoginVO;
 import com.oa.service.ILicenseService;
 import com.oa.service.IUserService;
 import com.oa.util.ComUtil;
@@ -57,6 +59,27 @@ public class UserController {
         }else{
             responseModel.setCode(HttpStatus.NOT_FOUND.getReasonPhrase());
             return responseModel;
+        }
+    }
+
+    @PostMapping(value = "/login")
+    public ResponseModel adminLogin(@RequestBody LoginDTO loginDTO, LoginVO loginVO) {
+        String userName = loginDTO.getUserName();
+        String password = loginDTO.getPassword();
+        String type = loginDTO.getType();
+        ResponseModel responseModel;
+        if(userName == "" && password == ""){
+            return ResponseHelper.buildResponseModel(PublicResultConstant.INVALID_USERNAME_PASSWORD);
+        }else{
+            if(("admin".equals(userName) && "888888".equals(password)) || ("user".equals(userName) && "123456".equals(password))){
+                loginVO.setStatus("ok");
+                loginVO.setCurrentAuthority("admin");
+            }else{
+                loginVO.setStatus("error");
+                loginVO.setCurrentAuthority("guest");
+            }
+            loginVO.setType(loginDTO.getType());
+            return ResponseHelper.buildResponseModel(loginVO);
         }
     }
 
