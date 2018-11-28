@@ -131,6 +131,7 @@ public class UserController {
             return ResponseHelper.validationFailure(PublicResultConstant.ERROR);
     }
 
+    @ApiOperation(value="更新用户", notes="更新用户")
     @PutMapping("/{openId}")
     public ResponseModel update (@PathVariable("openId") String openId,@RequestBody User user) throws Exception{
         User userTemp = userService.selectById(user.getOpenId());
