@@ -114,7 +114,6 @@ public class UserController {
             @ApiImplicitParam(name = "openId", value = "用户openId", required = true, dataType = "String", paramType = "path"),
             @ApiImplicitParam(name = "file", value = "用户照片", required = true, dataType = "file", paramType = "form")
     })
-
     @PostMapping(value = "/face/{openId}")
     public ResponseModel validateFace(@PathVariable("openId") String openId, @RequestParam ("file" ) MultipartFile file) throws Exception {
 
@@ -159,7 +158,8 @@ public class UserController {
     public ResponseModel update (@PathVariable("openId") String openId,@RequestBody User user) throws Exception{
         User userTemp = userService.selectById(user.getOpenId());
         userTemp.setGender(user.getGender());
-        userTemp.setUsername(user.getNickname());
+        userTemp.setNickname(user.getNickname());
+        userTemp.setUsername(user.getUsername());
         userTemp.setStatus(user.getStatus());
         boolean res = userService.updateById(userTemp);
         if(res)

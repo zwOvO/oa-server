@@ -1,7 +1,5 @@
 package com.oa.controller;
 
-import com.alibaba.fastjson.JSONArray;
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.oa.base.PublicResultConstant;
 import com.oa.config.ResponseHelper;
 import com.oa.config.ResponseModel;
@@ -19,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 

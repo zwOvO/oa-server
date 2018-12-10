@@ -50,7 +50,10 @@
         <springfox-swagger2.version>2.2.2</springfox-swagger2.version>
         <guava.version>18.0</guava.version>
         <aip.version>4.7.0</aip.version>
-        <dozer.version>5.4.0</dozer.version>
+        <easyexcel.version>1.0.4</easyexcel.version>
+        <dozer.version>5.5.1</dozer.version>
+        <huttol.version>2.15.11</huttol.version>
+
     </properties>
 
     <dependencyManagement>
@@ -60,25 +63,21 @@
                 <artifactId>java-sdk</artifactId>
                 <version>${aip.version}</version>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/com.alibaba/easyexcel -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>easyexcel</artifactId>
+                <version>${easyexcel.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/net.sf.dozer/dozer -->
             <dependency>
                 <groupId>net.sf.dozer</groupId>
                 <artifactId>dozer</artifactId>
                 <version>${dozer.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-api</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>jcl-over-slf4j</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-log4j12</artifactId>
-                    </exclusion>
-                </exclusions>
             </dependency>
+
+
+
             <dependency>
                 <groupId>org.freemarker</groupId>
                 <artifactId>freemarker</artifactId>

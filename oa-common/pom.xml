@@ -17,6 +17,11 @@
             <groupId>com.baidu.aip</groupId>
             <artifactId>java-sdk</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>easyexcel</artifactId>
+        </dependency>
+
         <!--UserLib-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -57,6 +62,10 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-support</artifactId>
             <version>2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.dozer</groupId>
+            <artifactId>dozer</artifactId>
         </dependency>
     </dependencies>
 </project>

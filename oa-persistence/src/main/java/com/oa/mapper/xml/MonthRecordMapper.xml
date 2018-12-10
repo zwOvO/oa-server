@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oa.mapper.MonthRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="MonthRecordVOResultMap" type="com.oa.entity.vo.MonthRecordVO">
+        <id column="id" property="id" />
+        <id column="open_id" property="openId" />
+        <id column="username" property="userName" />
+        <id column="should_num" property="shouldNum" />
+        <id column="trued_num" property="truedNum" />
+        <id column="leave_num" property="leaveNum" />
+        <id column="absence_num" property="absenceNum" />
+        <id column="for_date" property="forDate" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+    <sql id="orderByCreateTimeASC">
+        order by create_time desc
+    </sql>
+
+    <select id="selectLeaveVOList" resultMap="MonthRecordVOResultMap" parameterType="com.oa.entity.dto.MonthRecordQuery">
+        SELECT r.*,u.username FROM tb_month_revord r JOIN tb_user u ON r.open_id = u.open_id
+        <where>
+            <if test="openId != null and openId != ''">
+                and r.open_id = #{openId}
+            </if>
+            <if test="username != null and username != ''">
+                and u.username like concat('%',#{username},'%')
+            </if>
+            <if test="month != null and month != ''">
+                and r.for_date like concat(#{month},'%')
+            </if>
+        </where>
+        <include refid="orderByCreateTimeASC"></include>
+    </select>
+</mapper>

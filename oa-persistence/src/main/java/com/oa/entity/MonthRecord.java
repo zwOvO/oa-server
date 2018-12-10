@@ -8,8 +8,8 @@ import com.baomidou.mybatisplus.enums.IdType;
 import lombok.*;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * <p>
