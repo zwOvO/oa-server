@@ -1,4 +1,4 @@
-package com.oa.base;
+package com.oa.util;
 
 /**
  * @author zhengwen

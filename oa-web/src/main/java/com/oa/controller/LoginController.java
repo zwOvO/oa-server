@@ -2,7 +2,7 @@ package com.oa.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.oa.base.PublicResultConstant;
+import com.oa.util.PublicResultConstant;
 import com.oa.config.ResponseHelper;
 import com.oa.config.ResponseModel;
 import com.oa.util.HttpUtil;
