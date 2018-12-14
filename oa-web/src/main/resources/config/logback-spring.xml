@@ -19,13 +19,7 @@
 		</rollingPolicy>
 	</appender>
 
-	<!--<logger name="org.springframework" level="error"/>-->
-	<!--<logger name="jdbc.connection" level="OFF"/>-->
-	<!--<logger name="org.apache" level="error"/>-->
-	<!--<logger name="com.alibaba" level="error"/>-->
-	<!--<logger name="org.apache.kafka.clients.producer.ProducerConfig" level="warn"/>-->
-
-    <logger name="com.oa.mapper" level="DEBUG" />
+	<logger name="com.oa.mapper" level="DEBUG"/>
 
     <root level="INFO">
 		<appender-ref ref="CONSOLE"/>

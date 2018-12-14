@@ -6,7 +6,7 @@ logging:
   level:
     org:
       springframework:
-        web: debug
+        web: info
 http:
   #上传文件大小设置
   multipart:
