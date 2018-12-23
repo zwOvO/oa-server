@@ -14,9 +14,7 @@ spring:
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://106.12.152.251:3306/oa?useUnicode=true&characterEncoding=utf8
     username: root
-    password: bL4p9wbJkX1xT7TOXLU6B8AWgc3YT4eBcxmDBA30asExfem610a197AbjZ/wJ5cTvB3YDKgfH9JtBdgr/tdtmQ==
-    publicKey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAIOEKwEnBAKv3GkcofQcSUXIdgd2Y2/7lpy1x+wX6lfzgVlGFzx6wPacLU4kClygfMDZsfm0SgLOT99RLjYr+8sCAwEAAQ==
-
+    password: daxiongdics1701
     initialSize: 5
     minIdle: 5
     maxActive: 20
