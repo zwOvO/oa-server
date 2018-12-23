@@ -1,7 +1,7 @@
 #当前激活配置
 spring:
   profiles:
-    active: dev
+    active: prod
 logging:
   level:
     org:
