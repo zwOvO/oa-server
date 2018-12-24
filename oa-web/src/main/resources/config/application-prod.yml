@@ -28,7 +28,7 @@ spring:
     poolPreparedStatements: true
     maxPoolPreparedStatementPerConnectionSize: 20
     filters: stat,wall,log4j
-    #connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+#   connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
     useGlobalDataSourceStat: true
     logSlowSql: true
 mybatis-plus:
