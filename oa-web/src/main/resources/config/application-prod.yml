@@ -28,7 +28,6 @@ spring:
     poolPreparedStatements: true
     maxPoolPreparedStatementPerConnectionSize: 20
     filters: stat,wall,log4j
-#   connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
     useGlobalDataSourceStat: true
     logSlowSql: true
 mybatis-plus:
@@ -43,7 +42,7 @@ mybatis-plus:
   jdbc-type-for-null: 'null'
 logging:
   config: classpath:config/logback-spring.xml
-  level.root :  dev
+  level.root :  info
   path :  logs/
   file :  oa.log
 
