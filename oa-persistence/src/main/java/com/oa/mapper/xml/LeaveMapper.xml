@@ -6,6 +6,8 @@
     <resultMap id="LeaveVOResultMap" type="com.oa.entity.vo.LeaveVO">
         <id column="open_id" property="openId" />
         <result column="leave_type" property="leaveType" />
+        <result column="start_time" property="startTime" />
+        <result column="stop_time" property="stopTime" />
         <result column="create_time" property="createTime" />
     </resultMap>
     <sql id="orderByCreateTimeASC">

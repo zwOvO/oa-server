@@ -37,7 +37,7 @@ public class LoginController {
         if(StringUtils.isBlank(code)){
             return ResponseHelper.validationFailure(PublicResultConstant.UNAUTHORIZED);
         }
-        String res = HttpUtil.get("https://api.weixin.qq.com/sns/jscode2session?appid=wx060c24db20a8d971&secret=65e088e6d48af9a995343b554c78cf64&js_code=" + code + "&grant_type=authorization_code");
+        String res = HttpUtil.get("https://api.weixin.qq.com/sns/jscode2session?appid=wx25f32aafba32441f&secret=a6e9ef1254657a688ddde16c9b9025b2&js_code=" + code + "&grant_type=authorization_code");
         JSONObject jsonObject = JSON.parseObject(res);
         String openid = jsonObject.getString("openid");
         if(!StringUtils.isBlank(openid)){

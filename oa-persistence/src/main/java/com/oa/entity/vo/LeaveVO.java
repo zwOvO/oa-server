@@ -1,18 +1,12 @@
 package com.oa.entity.vo;
 
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableName;
-import com.baomidou.mybatisplus.enums.IdType;
 import lombok.*;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  * <p>
- *  用户表
+ *  请假
  * </p>
  *
  * @author zhengwen
@@ -51,6 +45,14 @@ public class LeaveVO{
      * 请假状态（0：未审核、1：通过、2：拒绝）
      */
     private int status;
+    /**
+     * 请假开始时间
+     */
+    private String startTime;
+    /**
+     * 请假结束时间
+     */
+    private String stopTime;
     /**
      * 请假时间
      */

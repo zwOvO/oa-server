@@ -12,9 +12,10 @@ import java.util.HashMap;
 
 public class BaiduAIUtils {
     //设置APPID/AK/SK
-    public static final String APP_ID = "10681507";
-    public static final String API_KEY = "h0rikGrSmtBLYiWAeOE6HQcz";
-    public static final String SECRET_KEY = "VZSQFUVuY5BKPNE9YCWnoKpzQOn4I7mH";
+
+    public static final String APP_ID = "23518281";
+    public static final String API_KEY = "90RBuY905x2rqSwY1vf2xWWd";
+    public static final String SECRET_KEY = "44vS1Pps7H3V88TgV9KjmoFlUFzFYmxl";
     public static final AipFace client;
     static{
         // 初始化一个AipFace
@@ -69,7 +70,7 @@ public class BaiduAIUtils {
     }
 
     //人脸注册
-    public static String addUser(String faceToken, String groupId, String userId) {
+    public static String addUser(String faceToken, String groupId, Integer userId) {
         try {
             // 传入可选参数调用接口
             HashMap<String, String> options = new HashMap<String, String>();
@@ -81,7 +82,7 @@ public class BaiduAIUtils {
             String imageType = "FACE_TOKEN";
 
             // 人脸注册
-            JSONObject res = client.addUser(image, imageType, groupId, userId, options);
+            JSONObject res = client.addUser(image, imageType, groupId, String.valueOf(userId), options);
             return res.toString();
         }catch (Exception e){
             return new JSONObject().put("error_code",-1).put("error_msg",e.getMessage()).toString();
@@ -89,7 +90,7 @@ public class BaiduAIUtils {
     }
 
     //人脸更新
-    public static String updateUser(String faceToken, String groupId, String userId) {
+    public static String updateUser(String faceToken, String groupId, Integer userId) {
         try {
             // 传入可选参数调用接口
             HashMap<String, String> options = new HashMap<String, String>();
@@ -101,7 +102,7 @@ public class BaiduAIUtils {
             String imageType = "FACE_TOKEN";
 
             // 人脸注册
-            JSONObject res = client.updateUser(image, imageType, groupId, userId, options);
+            JSONObject res = client.updateUser(image, imageType, groupId, String.valueOf(userId), options);
             return res.toString();
         }catch (Exception e){
             return new JSONObject().put("error_code",-1).put("error_msg",e.getMessage()).toString();

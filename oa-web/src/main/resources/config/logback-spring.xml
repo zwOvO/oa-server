@@ -181,7 +181,7 @@
 		<appender-ref ref="INFO" />
 		<!--<appender-ref ref="DEBUG" />-->
 		<!-- 生产环境将请stdout去掉 -->
-		<!--<appender-ref ref="STDOUT" />-->
+		<appender-ref ref="STDOUT" />
 	</root>
 
 </configuration>

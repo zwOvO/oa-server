@@ -54,7 +54,17 @@ public class Leave extends Model<Leave> {
     @TableField("status")
     private int status;
     /**
-     * 请假时间
+     * 请假开始时间
+     */
+    @TableField("start_time")
+    private String startTime;
+    /**
+     * 请假结束时间
+     */
+    @TableField("stop_time")
+    private String stopTime;
+    /**
+     * 请假申请时间
      */
     @TableField("create_time")
     private Timestamp createTime;

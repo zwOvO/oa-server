@@ -89,7 +89,7 @@ public class UserController {
     public ResponseModel findOneUser(@PathVariable("openId") String openId) {
         if(openId == null)
             return ResponseHelper.validationFailure(PublicResultConstant.INVALID_USER);
-        User user = userService.selectById(openId);
+        User user = userService.selectByOpenId(openId);
         if(user == null)
             return ResponseHelper.validationFailure(PublicResultConstant.INVALID_USER);
         if(StringUtils.isBlank(user.getFaceToken()))
@@ -101,7 +101,7 @@ public class UserController {
     @ApiImplicitParam(name = "openId", value = "用户ID", required = true, dataType = "String",paramType = "path")
     @DeleteMapping(value = "/{openId}")
     public ResponseModel deleteUser(@PathVariable("openId") String openId) {
-        User user = userService.selectById(openId);
+        User user = userService.selectByOpenId(openId);
         if (ComUtil.isEmpty(user)) {
             return ResponseHelper.validationFailure(PublicResultConstant.INVALID_USER);
         }
@@ -117,12 +117,12 @@ public class UserController {
     @PostMapping(value = "/face/{openId}")
     public ResponseModel validateFace(@PathVariable("openId") String openId, @RequestParam ("file" ) MultipartFile file) throws Exception {
 
-        if(file .isEmpty()) {
+        if(file.isEmpty()) {
             return ResponseHelper.buildResponseModel(false);
         }
-        User user = userService.selectById(openId);
+        User user = userService.selectByOpenId(openId);
         boolean isInsert = StringUtils.isBlank(user.getFaceToken());
-        String faceToken =  userService.validateFace(file.getInputStream(),"FJUT_CS1701_OA",user.getOpenId(),isInsert);
+        String faceToken =  userService.validateFace(file.getInputStream(),"FJUT_CS1701_OA",user.getId(),isInsert);
         if(!StringUtils.isBlank(faceToken)) {
             return ResponseHelper.buildResponseModel(faceToken);
         }else{
@@ -171,7 +171,7 @@ public class UserController {
     @PostMapping("/register")
     public ResponseModel register (@RequestBody User user) throws Exception{
 
-        boolean res = userService.insertOrUpdate(user);
+        boolean res = userService.insertOrUpdateByOpenId(user);
         if(res)
             return ResponseHelper.buildResponseModel(PublicResultConstant.SUCCESS);
         else

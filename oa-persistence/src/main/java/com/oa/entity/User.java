@@ -30,7 +30,11 @@ public class User extends Model<User> {
     /**
      * 用户标识
      */
-    @TableId("open_id")
+    @TableId
+    private Integer id;
+    /**
+     * 小程序用户标识
+     */
     private String openId;
     /**
      * 昵称
@@ -71,7 +75,7 @@ public class User extends Model<User> {
 
     @Override
     protected Serializable pkVal() {
-        return this.openId;
+        return this.id;
     }
 
 }

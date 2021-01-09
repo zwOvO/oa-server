@@ -20,8 +20,7 @@ import java.util.List;
 public interface UserMapper extends BaseMapper<User> {
     List<User> selectUserList(UserQuery query);
 
-    //等同于编写一个普通 list 查询，mybatis-plus 自动替你分页
-    int updateFaceTokenById(@Param("openId")String openId, @Param("faceToken")String faceToken);
+    int updateFaceTokenById(@Param("id")int id, @Param("faceToken")String faceToken);
 
-
+    User selectByOpenId(@Param("openId")String openId);
 }

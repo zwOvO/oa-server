@@ -40,12 +40,7 @@ public class LeaveController {
     public ResponseModel allList(LeaveQuery leaveQuery) {
         List<LeaveVO> records = leaveService.selectLeaveVOList(leaveQuery);
         ResponseModel responseModel = ResponseHelper.buildResponseModel(records);
-        if(records.size()>0) {
-            return responseModel;
-        }else{
-            responseModel.setCode(HttpStatus.NOT_FOUND.getReasonPhrase());
-            return responseModel;
-        }
+        return responseModel;
     }
 
     @ApiOperation(value="分页获取指定用户请假记录", notes="获取指定用户请假记录")
@@ -56,7 +51,8 @@ public class LeaveController {
     })
     @GetMapping("/list/{openId}")
     public ResponseModel list(@PathVariable("openId")String openId, @ApiIgnore Page page) {
-        Page records = leaveService.selectPage(page,new EntityWrapper<Leave>().eq("open_id",openId).orderBy("create_time",false));
+        Page records = leaveService.selectPage(page,new EntityWrapper<Leave>().eq("open_id",openId)
+                .orderBy("create_time",false));
         if(records.getRecords().size()>0)
             return ResponseHelper.buildResponseModel(records.getRecords());
         else

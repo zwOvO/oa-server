@@ -1,12 +1,7 @@
 #当前激活配置
 spring:
   profiles:
-    active: prod
-logging:
-  level:
-    org:
-      springframework:
-        web: info
+    active: dev
 http:
   #上传文件大小设置
   multipart:

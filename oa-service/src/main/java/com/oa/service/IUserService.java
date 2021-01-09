@@ -21,24 +21,13 @@ import java.util.Map;
  */
 public interface IUserService extends BaseService<User> {
 
-    /**
-     * 根据用户名查询用户
-     * @param username 用户名
-     * @return 用户
-     */
-    User getUserByUserName(String username);
-
-    /**
-     * 注册用户
-     * @param user
-     * @param roleCode
-     * @return
-     */
-    User register(User user, String roleCode);
-
     boolean deleteByUserNo(String userNo);
 
-    String validateFace(InputStream is, String groupId, String userId, boolean isInsert);
+    String validateFace(InputStream is, String groupId, Integer userId, boolean isInsert);
 
     List<User> selectUserList(@Param("query") UserQuery recordQuery);
+
+    User selectByOpenId(@Param("open_id") String openId);
+
+    boolean insertOrUpdateByOpenId(User user);
 }

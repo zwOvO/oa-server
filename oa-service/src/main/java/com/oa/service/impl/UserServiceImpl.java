@@ -1,14 +1,12 @@
 package com.oa.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.oa.entity.dto.UserQuery;
 import com.oa.service.IUserService;
 import com.oa.entity.User;
 import com.oa.mapper.UserMapper;
 import com.oa.util.BaiduAIUtils;
-import com.oa.util.GenerationSequenceUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,28 +27,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     UserMapper userMapper;
 
     @Override
-//    @Cacheable(value = "UserToRole",keyGenerator="wiselyKeyGenerator")
-    public User getUserByUserName(String username) {
-        EntityWrapper<User> ew = new EntityWrapper<>();
-        ew.where("user_name={0}", username);
-        return this.selectOne(ew);
-    }
-
-    @Override
-    public User register(User user, String  roleCode) {
-        user.setOpenId(GenerationSequenceUtil.generateUUID("user"));
-        this.insert(user);
-        return user;
-    }
-
-    @Override
     public boolean deleteByUserNo(String userNo) {
         boolean  resultUser = this.deleteById(userNo);
         return resultUser;
     }
 
     @Override
-    public String validateFace(InputStream is, String groupId, String userId , boolean isInsert) {
+    public String validateFace(InputStream is, String groupId, Integer userId, boolean isInsert) {
         try {
             JSONObject res = JSONObject.parseObject(BaiduAIUtils.detect(is));
             int resCode = res.getIntValue("error_code");
@@ -127,13 +110,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
                     String faceToken = res.getString("face_token");
                     if (isInsert) {
                         res = JSONObject.parseObject(BaiduAIUtils.addUser(faceToken, groupId, userId));
-                        faceToken = res.getJSONObject("result").getString("face_token");
                     } else {
                         res = JSONObject.parseObject(BaiduAIUtils.updateUser(faceToken, groupId, userId));
                         faceToken = res.getJSONObject("result").getString("face_token");
                     }
                     resCode = res.getIntValue("error_code");
-                    if (resCode == 0) {
+                    // success || error_msg -> face already exist
+                    if (resCode == 0 || 223105 == res.getIntValue("error_code")) {
                         userMapper.updateFaceTokenById(userId, faceToken);
                         return faceToken;
                     } else
@@ -151,5 +134,22 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     public List<User> selectUserList(UserQuery userQuery) {
         List<User> userList= userMapper.selectUserList(userQuery);
         return userList;
+    }
+
+    @Override
+    public User selectByOpenId(String openId) {
+        return userMapper.selectByOpenId(openId);
+    }
+
+    @Override
+    public boolean insertOrUpdateByOpenId(User user) {
+        User dbUser = userMapper.selectByOpenId(user.getOpenId());
+        if (dbUser != null) {
+            user.setId(dbUser.getId());
+            userMapper.updateAllColumnById(user);
+        } else {
+            userMapper.insert(user);
+        }
+        return true;
     }
 }

@@ -4,11 +4,13 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.oa.entity.User">
-        <id column="open_id" property="openId" />
+        <id column="id" property="id" />
+        <result column="open_id" property="openId" />
         <result column="username" property="username" />
         <result column="avatar" property="avatar" />
         <result column="face_token" property="faceToken" />
         <result column="gender" property="gender" />
+        <result column="status" property="status" />
         <result column="create_time" property="createTime" />
     </resultMap>
     <sql id="orderByCreateTimeASC">
@@ -16,8 +18,12 @@
     </sql>
 
     <update id="updateFaceTokenById">
-        update tb_user set face_token = #{faceToken} where open_id = #{openId}
+        update tb_user set face_token = #{faceToken} where id = #{id}
     </update>
+
+    <select id="selectByOpenId" resultMap="BaseResultMap" parameterType="com.oa.entity.dto.UserQuery">
+    SELECT * FROM tb_user where open_id = #{openId}
+    </select>
 
     <select id="selectUserList" resultMap="BaseResultMap" parameterType="com.oa.entity.dto.UserQuery">
         SELECT * FROM  tb_user
